@@ -19,7 +19,7 @@
     rel="stylesheet">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles.css?v=20261020-middle-text">
 </head>
 
 <body>
@@ -94,17 +94,24 @@
         </div>
       </header>
 
-      <!-- Accessible typography layer for SEO and accessibility (visually transparent) -->
-      <div class="hero-content" aria-hidden="true">
-        <span class="hero-badge-wrap">
+      <!-- Editorial Typography & CTA layer (Visible and styled on mobile; transparent accessible layer on desktop where composite graphic is used) -->
+      <div class="hero-content">
+        <div class="hero-badge-wrap">
           <span class="hero-badge-dot"></span>
           <span class="hero-badge-text">Haute Couture 2026 Edition</span>
-        </span>
-        <h1>The Poetry of <em>Silhouette</em> &amp; Pure Weave.</h1>
-        <p>Rooted in centuries of Indian handloom heritage. Reimagined for the modern connoisseur in nocturnal midnight navy (#0B162A) and raw champagne sand (#C9B7A5) silks.</p>
+        </div>
+        <h1 class="hero-title">The Poetry of<br><em>Silhouette &amp;</em><br>Pure Weave.</h1>
+        <p class="hero-desc">Rooted in Indian handloom heritage. Reimagined in midnight navy and champagne sand silks.</p>
+        <p class="hero-tagline-strip">SILK &nbsp;•&nbsp; HERITAGE &nbsp;•&nbsp; MODERNITY</p>
+        <div class="hero-mobile-cta">
+          <a href="#collections" class="btn-primary hero-main-btn" aria-label="Explore the collection">
+            <span>EXPLORE THE COLLECTION</span>
+            <span class="btn-arrow">→</span>
+          </a>
+        </div>
       </div>
 
-      <!-- Interactive Hotspots mapped exactly over banner graphic -->
+      <!-- Desktop Interactive Hotspots mapped exactly over desktop composite graphic -->
       <div class="hero-links">
         <a href="#collections" class="hero-cta-hotspot" aria-label="Explore the collection">Explore collection</a>
       </div>

@@ -4,20 +4,250 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>PARVAII — The Poetry of Silhouette</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Montserrat:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--navy:#0b162a;--sand:#e8d4bd;--white:#f9f6f2}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--navy);color:var(--white);font-family:Montserrat,sans-serif}button,a{font:inherit}button{cursor:pointer}.announcement{height:44px;background:#0c1930;display:flex;align-items:center;overflow:hidden;white-space:nowrap;color:#ead7c1;font-size:11px;font-weight:600;letter-spacing:2px}.marquee{display:flex;gap:45px;min-width:max-content;animation:marquee 36s linear infinite}.marquee span{padding-left:35px}@keyframes marquee{to{transform:translateX(-50%)}}.hero{position:relative;min-height:calc(100svh - 44px);overflow:hidden;background:#1b1c22}.hero-photo{position:absolute;inset:0;background-image:url('reference.png');background-position:center top;background-size:100% 100%;filter:brightness(.96)}.hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(5,12,24,.22),transparent 45%)}.nav{position:relative;z-index:4;height:122px;display:flex;align-items:center;justify-content:space-between;padding:0 7%;}.icon-btn{border:0;background:transparent;color:white;padding:10px;display:inline-flex;align-items:center;justify-content:center}.icon-btn svg{width:23px;height:23px;stroke:currentColor;fill:none;stroke-width:1.6}.nav-actions{display:flex;gap:13px;align-items:center}.brand{position:absolute;left:50%;transform:translateX(-50%);top:9px;text-align:center;text-decoration:none;color:#f7e9d6;display:block;opacity:0}/* Logo already exists inside the supplied screenshot */.brand .mark{font:italic 75px Cormorant Garamond,serif;line-height:1}.brand .name{font-size:13px;letter-spacing:6px}.hero-content{position:relative;z-index:2;max-width:700px;margin:75px 0 0 7.9%;opacity:0;pointer-events:none}/* The reference is a flattened screenshot, so its original typography is shown without duplicate overlays. */.hero-content h1{font:500 clamp(55px,5.3vw,105px)/.98 Cormorant Garamond,serif}.hero-content p{max-width:550px;line-height:1.8}.hero-links{position:absolute;z-index:5;left:7.9%;bottom:8%;display:flex;gap:20px}.hero-links a{display:inline-block;width:300px;height:55px;color:transparent;text-decoration:none}.philosophy-hotspot{position:absolute;z-index:5;right:4%;top:38%;width:33%;height:39%;cursor:pointer}.drawer-backdrop{position:fixed;inset:0;z-index:20;background:rgba(0,0,0,.55);opacity:0;visibility:hidden;transition:.3s}.drawer-backdrop.open{opacity:1;visibility:visible}.drawer{position:fixed;z-index:21;left:0;top:0;bottom:0;width:min(390px,88vw);background:#101c31;padding:36px;transform:translateX(-105%);transition:transform .35s}.drawer.open{transform:translateX(0)}.drawer-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:65px}.drawer h2{font:40px Cormorant Garamond,serif;letter-spacing:4px}.drawer a{display:block;color:#f3e5d3;text-decoration:none;padding:17px 0;border-bottom:1px solid #ffffff22;font:29px Cormorant Garamond,serif}.section{padding:110px 7.9%;background:#f4eee5;color:#152139;text-align:center}.eyebrow{font-size:11px;letter-spacing:4px;text-transform:uppercase;font-weight:700;color:#947757}.section h2{font:500 clamp(45px,6vw,85px)/1 Cormorant Garamond,serif;margin:18px 0}.section p{max-width:620px;margin:20px auto 35px;line-height:1.9;font-size:14px}.outline{display:inline-block;text-decoration:none;border:1px solid #18223b;color:#18223b;padding:17px 34px;text-transform:uppercase;font-size:11px;font-weight:700;letter-spacing:2px}.footer{background:#0b162a;color:#e5d4c0;padding:50px 8%;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.footer strong{letter-spacing:5px}.footer p{font-size:12px;opacity:.75}.modal{position:fixed;inset:0;z-index:30;background:#071123e8;display:none;place-items:center;padding:20px}.modal.open{display:grid}.modal-panel{width:min(550px,100%);background:#f4eee5;color:#152139;padding:35px}.modal-top{display:flex;justify-content:space-between;align-items:center}.modal h2{font:42px Cormorant Garamond,serif}.modal input{width:100%;padding:16px;border:1px solid #cbbca9;background:transparent;font:inherit}.modal button{border:0;background:transparent;font-size:26px}.toast{position:fixed;z-index:50;right:24px;bottom:24px;padding:17px 24px;background:#e7d4bd;color:#102039;box-shadow:0 8px 30px #0003;opacity:0;transform:translateY(20px);transition:.3s}.toast.show{opacity:1;transform:translateY(0)}@media(max-width:800px){.announcement{height:36px;font-size:9px}.hero{min-height:680px}.hero-photo{background-size:auto 100%;background-position:51% top}.nav{padding:0 5%;height:90px}.nav-actions{gap:2px}.hero-links{left:5%;bottom:7%}.hero-links a{width:220px}.philosophy-hotspot{display:none}.section{padding:80px 6%}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;scroll-behavior:auto!important}}
+:root{--navy:#0b162a;--sand:#c9b7a5;--sand-light:#e7d4bd;--white:#f9f6f2}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--navy);color:var(--white);font-family:'Plus Jakarta Sans',Montserrat,sans-serif}
+button,a{font:inherit}
+button{cursor:pointer}
+.announcement{height:44px;background:#0c1930;display:flex;align-items:center;overflow:hidden;white-space:nowrap;color:#ead7c1;font-size:11px;font-weight:600;letter-spacing:2px;border-bottom:1px solid rgba(201,183,165,0.15)}
+.marquee{display:flex;gap:45px;min-width:max-content;animation:marquee 36s linear infinite}
+.marquee span{padding-left:35px}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+.hero{position:relative;min-height:calc(100svh - 44px);overflow:hidden;background:#1b1c22;display:block}
+.hero-photo{position:absolute;inset:0;background-image:url('assets/images/banner-hero-seamless.png');background-position:center top;background-size:100% 100%;filter:brightness(.98)}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(5,12,24,.22),transparent 45%)}
+
+.nav{position:relative;z-index:10;height:140px;display:flex;align-items:center;justify-content:space-between;padding:0 7.34%}
+.icon-btn{border:0;background:transparent;color:#f7e9d6;padding:10px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;cursor:pointer;position:relative}
+.icon-btn svg{width:23px;height:23px;stroke:currentColor;fill:none;stroke-width:1.6}
+.nav-actions{display:flex;gap:13px;align-items:center}
+.badge-count{position:absolute;top:3px;right:3px;background:#0b162a;color:#e8d4bd;font-size:0.58rem;font-weight:700;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1px solid rgba(201,183,165,0.45)}
+
+.brand{position:absolute;left:50%;transform:translateX(-50%);top:50%;margin-top:-30px;text-align:center;text-decoration:none;display:flex;flex-direction:column;align-items:center;opacity:0;pointer-events:none;transition:opacity 0.3s ease}
+.brand img{height:48px;width:auto;object-fit:contain}
+
+.hero-content{position:relative;z-index:2;max-width:700px;margin:75px 0 0 7.9%;opacity:0;pointer-events:none}
+.hero-content h1{font:500 clamp(55px,5.3vw,105px)/.98 Cormorant Garamond,serif}
+.hero-content p{max-width:550px;line-height:1.8}
+.hero-mobile-cta{display:none}
+
+.hero-links{position:absolute;z-index:5;left:7.89%;bottom:7.2%;display:flex;gap:20px}
+.hero-links a{display:block;width:clamp(230px,24.6vw,455px);height:clamp(50px,6.8vh,65px);color:transparent;text-decoration:none;cursor:pointer;border-radius:4px}
+.philosophy-hotspot{position:absolute;z-index:5;right:4%;top:37%;width:34%;height:41%;cursor:pointer;border-radius:4px}
+
+.drawer-backdrop{position:fixed;inset:0;z-index:120;background:rgba(0,0,0,.55);opacity:0;visibility:hidden;transition:.3s}
+.drawer-backdrop.open{opacity:1;visibility:visible}
+.drawer{position:fixed;z-index:130;left:0;top:0;bottom:0;width:min(390px,88vw);background:#101c31;padding:36px;transform:translateX(-105%);transition:transform .35s}
+.drawer.open{transform:translateX(0)}
+.drawer-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:65px}
+.drawer h2{font:40px Cormorant Garamond,serif;letter-spacing:4px}
+.drawer a{display:block;color:#f3e5d3;text-decoration:none;padding:17px 0;border-bottom:1px solid #ffffff22;font:29px Cormorant Garamond,serif}
+
+.section{padding:110px 7.9%;background:#f4eee5;color:#152139;text-align:center}
+.eyebrow{font-size:11px;letter-spacing:4px;text-transform:uppercase;font-weight:700;color:#947757}
+.section h2{font:500 clamp(45px,6vw,85px)/1 Cormorant Garamond,serif;margin:18px 0}
+.section p{max-width:620px;margin:20px auto 35px;line-height:1.9;font-size:14px}
+.outline{display:inline-block;text-decoration:none;border:1px solid #18223b;color:#18223b;padding:17px 34px;text-transform:uppercase;font-size:11px;font-weight:700;letter-spacing:2px}
+
+.footer{background:#0b162a;color:#e5d4c0;padding:50px 8%;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.footer strong{letter-spacing:5px}
+.footer p{font-size:12px;opacity:.75}
+
+.modal{position:fixed;inset:0;z-index:140;background:#071123e8;display:none;place-items:center;padding:20px}
+.modal.open{display:grid}
+.modal-panel{width:min(550px,100%);background:#f4eee5;color:#152139;padding:35px}
+.modal-top{display:flex;justify-content:space-between;align-items:center}
+.modal h2{font:42px Cormorant Garamond,serif}
+.modal input{width:100%;padding:16px;border:1px solid #cbbca9;background:transparent;font:inherit}
+.modal button{border:0;background:transparent;font-size:26px}
+
+.toast{position:fixed;z-index:150;right:24px;bottom:24px;padding:17px 24px;background:#e7d4bd;color:#102039;box-shadow:0 8px 30px #0003;opacity:0;transform:translateY(20px);transition:.3s}
+.toast.show{opacity:1;transform:translateY(0)}
+
+/* ==========================================================================
+   MOBILE RESPONSIVE RULES (Matching exact user mock)
+   ========================================================================== */
+@media(max-width:800px){
+  .announcement{height:38px;font-size:10px;letter-spacing:1.2px}
+  .hero{min-height:calc(100svh - 38px);display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;background:#0b162a}
+  .hero-photo{position:absolute;inset:0;background-image:url('assets/images/hero.jpg');background-size:cover;background-position:48% top;filter:brightness(0.96)}
+  .hero::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:2;background:linear-gradient(180deg,rgba(11,22,42,0.62) 0%,rgba(11,22,42,0.2) 20%,rgba(11,22,42,0.52) 55%,rgba(11,22,42,0.88) 88%,#0b162a 100%),radial-gradient(ellipse at 50% 55%,rgba(11,22,42,0.45) 0%,transparent 75%)}
+
+  .nav{position:relative;z-index:10;padding:0 1.25rem;height:80px;display:flex;align-items:center;justify-content:space-between;width:100%}
+  .brand{position:absolute;left:50%;transform:translateX(-50%);top:50%;margin-top:-20px;opacity:1!important;pointer-events:auto!important;display:flex;align-items:center;justify-content:center}
+  .brand img{height:40px;width:auto;max-height:40px;object-fit:contain;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.5))}
+
+  .icon-btn{width:38px;height:38px;border-radius:50%;background:rgba(11,22,42,0.45);backdrop-filter:blur(8px);border:1px solid rgba(201,183,165,0.25);color:#f6efe6;display:inline-flex;align-items:center;justify-content:center;padding:0}
+  .icon-btn svg{width:20px;height:20px;stroke:currentColor;stroke-width:1.7}
+  #wishlistButton{display:none}
+  .nav-actions{display:flex;align-items:center;gap:8px}
+  .badge-count{top:-2px;right:-2px;width:16px;height:16px;font-size:0.58rem;background:#0b162a;border:1px solid rgba(201,183,165,0.5)}
+
+  .hero-content{position:relative;z-index:5;opacity:1!important;pointer-events:auto!important;display:flex!important;flex-direction:column;align-items:center;text-align:center;max-width:380px;width:calc(100% - 2rem);margin:auto auto;padding:1.25rem 1rem;box-sizing:border-box;background:radial-gradient(ellipse at center,rgba(11,22,42,0.5) 0%,rgba(11,22,42,0.2) 65%,transparent 100%);border-radius:12px}
+  .hero-badge-wrap{display:inline-flex;align-items:center;gap:0.45rem;padding:0.35rem 0.95rem;border-radius:999px;background:rgba(11,22,42,0.55);border:1px solid rgba(201,183,165,0.45);backdrop-filter:blur(10px);margin:0 auto 0.9rem;align-self:center}
+  .hero-badge-dot{width:5px;height:5px;border-radius:50%;background:#c9b7a5;box-shadow:0 0 6px #c9b7a5}
+  .hero-badge-text{font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:#f4eee5;font-weight:600}
+
+  .hero-content h1{font-family:Cormorant Garamond,serif;font-size:clamp(2.35rem,8.8vw,3.25rem);line-height:1.06;color:#fff;font-weight:500;margin:0 auto 0.75rem;letter-spacing:-0.01em;text-align:center;text-shadow:0 2px 14px rgba(0,0,0,0.7)}
+  .hero-content h1 em{font-style:italic;font-weight:400;color:#dfc08a}
+  .hero-content p.hero-desc{font-size:0.88rem;line-height:1.5;color:rgba(246,239,230,0.95);margin:0 auto 0.85rem;max-width:320px;text-align:center;text-shadow:0 1px 8px rgba(0,0,0,0.65)}
+  .hero-tagline-strip{font-size:0.68rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:rgba(231,211,188,0.95);margin:0 auto 1.25rem;text-align:center;text-shadow:0 1px 6px rgba(0,0,0,0.55)}
+
+  .hero-mobile-cta{display:flex!important;justify-content:center;width:100%;margin:0 auto}
+  .hero-main-btn{display:inline-flex;align-items:center;justify-content:center;gap:0.65rem;width:min(100%,310px);height:50px;background:#c9b7a5;color:#0b162a;font-size:0.76rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;border-radius:2px;text-decoration:none;border:none;box-shadow:0 4px 20px rgba(0,0,0,0.4);transition:background 0.2s ease,transform 0.2s ease;margin:0 auto}
+  .hero-main-btn:active{transform:scale(0.98);background:#dfc08a}
+
+  .hero-links{display:none!important}
+  .philosophy-hotspot{display:none!important}
+  .section{padding:80px 6%}
+}
+@media(max-width:480px){
+  .nav{height:74px;padding:0 1rem}
+  .hero-content{padding:1rem 0.75rem;margin:auto auto;width:calc(100% - 1.5rem);max-width:340px}
+  .hero-content h1{font-size:clamp(2.15rem,8.4vw,2.75rem);line-height:1.05;text-align:center}
+  .hero-content p.hero-desc{font-size:0.84rem;max-width:290px;text-align:center}
+  .hero-tagline-strip{font-size:0.62rem;letter-spacing:0.2em;text-align:center}
+  .hero-main-btn{height:48px;font-size:0.72rem;letter-spacing:0.16em;width:min(100%,290px);margin:0 auto}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
 <div class="announcement"><div class="marquee" aria-label="Collection announcements"><span>THE DUSK & MIDNIGHT SILK 2026 COLLECTION HAS ARRIVED&nbsp; • &nbsp; USE CODE PARVAII10 FOR 10% OFF YOUR INAUGURAL ATELIER ORDER&nbsp; • &nbsp; EACH SILHOUETTE HANDCRAFTED BY MASTER WEAVERS IN LIMITED QUANTITIES&nbsp; •</span><span aria-hidden="true">THE DUSK & MIDNIGHT SILK 2026 COLLECTION HAS ARRIVED&nbsp; • &nbsp; USE CODE PARVAII10 FOR 10% OFF YOUR INAUGURAL ATELIER ORDER&nbsp; • &nbsp; EACH SILHOUETTE HANDCRAFTED BY MASTER WEAVERS IN LIMITED QUANTITIES&nbsp; •</span></div></div>
-<main><section class="hero" id="home" aria-label="PARVAII luxury collection"><div class="hero-photo"></div><header class="nav"><button class="icon-btn" id="menuButton" aria-label="Open navigation"><svg viewBox="0 0 24 24"><path d="M3 7h18M3 17h18"/></svg></button><a class="brand" href="#home"><span class="mark">ℛ</span><span class="name">PARVAII</span></a><div class="nav-actions"><button class="icon-btn" id="searchButton" aria-label="Search"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></button><button class="icon-btn" id="wishlistButton" aria-label="Wishlist"><svg viewBox="0 0 24 24"><path d="M20.8 8.6c0 4.1-8.8 10.1-8.8 10.1S3.2 12.7 3.2 8.6a4.7 4.7 0 0 1 8.8-2.2 4.7 4.7 0 0 1 8.8 2.2Z"/></svg></button><button class="icon-btn" id="cartButton" aria-label="Shopping bag"><svg viewBox="0 0 24 24"><path d="M5 8h14l-1 13H6L5 8ZM9 9V6a3 3 0 0 1 6 0v3"/></svg></button></div></header><div class="hero-content" aria-hidden="true"><h1>The Poetry of <em>Silhouette</em> & Pure Weave.</h1><p>Rooted in centuries of Indian handloom heritage.</p></div><div class="hero-links"><a href="#collection" aria-label="Explore the collection">Explore collection</a></div><div class="philosophy-hotspot" title="Discover our philosophy" role="button" tabindex="0" aria-label="Discover our philosophy"></div></section>
-<section class="section" id="collection"><div class="eyebrow">The 2026 atelier edit</div><h2>Woven for the extraordinary.</h2><p>Explore an expression of timeless Indian craftsmanship, considered silhouettes, and contemporary elegance.</p><a class="outline" href="mailto:hello@parvaii.example?subject=PARVAII%20Collection%20Enquiry" id="enquire">Enquire about the collection</a></section>
-<section class="section" id="story" style="background:#e7d7c5"><div class="eyebrow">Maison philosophy</div><h2>The art of the weave.</h2><p>“A kurti is not merely attire; it is an architectural dialogue between the artisan’s hand and the wearer’s grace.”</p></section></main>
-<footer class="footer"><div><strong>PARVAII</strong><p>Silk • Heritage • Modernity</p></div><p>© <span id="year"></span> PARVAII. All rights reserved.</p></footer>
-<div class="drawer-backdrop" id="backdrop"></div><aside class="drawer" id="drawer" aria-hidden="true"><div class="drawer-head"><h2>PARVAII</h2><button class="icon-btn" id="closeMenu" aria-label="Close menu">✕</button></div><a href="#home">Home</a><a href="#collection">The Collection</a><a href="#story">Our Story</a><a href="#collection">Contact</a></aside>
-<div class="modal" id="searchModal" role="dialog" aria-modal="true" aria-label="Search collection"><div class="modal-panel"><div class="modal-top"><h2>Discover PARVAII</h2><button id="closeSearch" aria-label="Close search">×</button></div><input id="searchInput" placeholder="Search our collection..." aria-label="Search our collection"><p id="searchHelp">The full product catalogue is coming soon.</p></div></div><div class="toast" id="toast" role="status"></div>
+
+<main>
+<section class="hero" id="home" aria-label="PARVAII luxury collection">
+  <div class="hero-photo"></div>
+
+  <header class="nav">
+    <button class="icon-btn" id="menuButton" aria-label="Open navigation">
+      <svg viewBox="0 0 24 24"><path d="M3 7h18M3 17h18"/></svg>
+    </button>
+    <a class="brand" href="#home">
+      <img src="assets/Logo_png.png" alt="Parvaii">
+    </a>
+    <div class="nav-actions">
+      <button class="icon-btn" id="searchButton" aria-label="Search">
+        <svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg>
+      </button>
+      <button class="icon-btn" id="wishlistButton" aria-label="Wishlist">
+        <svg viewBox="0 0 24 24"><path d="M20.8 8.6c0 4.1-8.8 10.1-8.8 10.1S3.2 12.7 3.2 8.6a4.7 4.7 0 0 1 8.8-2.2 4.7 4.7 0 0 1 8.8 2.2Z"/></svg>
+        <span class="badge-count">1</span>
+      </button>
+      <button class="icon-btn" id="cartButton" aria-label="Shopping bag">
+        <svg viewBox="0 0 24 24"><path d="M5 8h14l-1 13H6L5 8ZM9 9V6a3 3 0 0 1 6 0v3"/></svg>
+        <span class="badge-count">1</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="hero-content">
+    <div class="hero-badge-wrap">
+      <span class="hero-badge-dot"></span>
+      <span class="hero-badge-text">Haute Couture 2026 Edition</span>
+    </div>
+    <h1>The Poetry of<br><em>Silhouette &amp;</em><br>Pure Weave.</h1>
+    <p class="hero-desc">Rooted in Indian handloom heritage. Reimagined in midnight navy and champagne sand silks.</p>
+    <p class="hero-tagline-strip">SILK &nbsp;•&nbsp; HERITAGE &nbsp;•&nbsp; MODERNITY</p>
+    <div class="hero-mobile-cta">
+      <a href="#collection" class="hero-main-btn" aria-label="Explore the collection">
+        <span>EXPLORE THE COLLECTION</span>
+        <span>→</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-links">
+    <a href="#collection" aria-label="Explore the collection">Explore collection</a>
+  </div>
+  <div class="philosophy-hotspot" title="Discover our philosophy" role="button" tabindex="0" aria-label="Discover our philosophy"></div>
+</section>
+
+<section class="section" id="collection">
+  <div class="eyebrow">The 2026 atelier edit</div>
+  <h2>Woven for the extraordinary.</h2>
+  <p>Explore an expression of timeless Indian craftsmanship, considered silhouettes, and contemporary elegance.</p>
+  <a class="outline" href="mailto:hello@parvaii.example?subject=PARVAII%20Collection%20Enquiry" id="enquire">Enquire about the collection</a>
+</section>
+
+<section class="section" id="story" style="background:#e7d7c5">
+  <div class="eyebrow">Maison philosophy</div>
+  <h2>The art of the weave.</h2>
+  <p>“A kurti is not merely attire; it is an architectural dialogue between the artisan’s hand and the wearer’s grace.”</p>
+</section>
+</main>
+
+<footer class="footer">
+  <div><strong>PARVAII</strong><p>Silk • Heritage • Modernity</p></div>
+  <p>© <span id="year"></span> PARVAII. All rights reserved.</p>
+</footer>
+
+<div class="drawer-backdrop" id="backdrop"></div>
+<aside class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer-head">
+    <h2>PARVAII</h2>
+    <button class="icon-btn" id="closeMenu" aria-label="Close menu">✕</button>
+  </div>
+  <a href="#home">Home</a>
+  <a href="#collection">The Collection</a>
+  <a href="#story">Our Story</a>
+  <a href="#collection">Contact</a>
+</aside>
+
+<div class="modal" id="searchModal" role="dialog" aria-modal="true" aria-label="Search collection">
+  <div class="modal-panel">
+    <div class="modal-top">
+      <h2>Discover PARVAII</h2>
+      <button id="closeSearch" aria-label="Close search">×</button>
+    </div>
+    <input id="searchInput" placeholder="Search our collection..." aria-label="Search our collection">
+    <p id="searchHelp">The full product catalogue is coming soon.</p>
+  </div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
 <script>
-const $=s=>document.querySelector(s);const drawer=$('#drawer'),backdrop=$('#backdrop');function toggleMenu(open){drawer.classList.toggle('open',open);backdrop.classList.toggle('open',open);drawer.setAttribute('aria-hidden',String(!open));document.body.style.overflow=open?'hidden':''}$('#menuButton').onclick=()=>toggleMenu(true);$('#closeMenu').onclick=()=>toggleMenu(false);backdrop.onclick=()=>toggleMenu(false);document.querySelectorAll('.drawer a').forEach(a=>a.onclick=()=>toggleMenu(false));const modal=$('#searchModal');$('#searchButton').onclick=()=>{modal.classList.add('open');$('#searchInput').focus()};$('#closeSearch').onclick=()=>modal.classList.remove('open');modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('open')});document.addEventListener('keydown',e=>{if(e.key==='Escape'){toggleMenu(false);modal.classList.remove('open')}});let toastTimer;function toast(msg){const el=$('#toast');el.textContent=msg;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('show'),3000)}$('#wishlistButton').onclick=()=>toast('Your wishlist is empty.');$('#cartButton').onclick=()=>toast('Your shopping bag is empty.');const philosophy=$('.philosophy-hotspot');philosophy.onclick=()=>$('#story').scrollIntoView({behavior:'smooth'});philosophy.onkeydown=e=>{if(e.key==='Enter')$('#story').scrollIntoView({behavior:'smooth'})};$('#searchInput').addEventListener('input',e=>{$('#searchHelp').textContent=e.target.value?'No products are published yet. Please check back soon.':'The full product catalogue is coming soon.'});$('#year').textContent=new Date().getFullYear();$('#enquire').onclick=e=>{e.preventDefault();toast('Add your business email or WhatsApp link to enable enquiries.')};
+const $=s=>document.querySelector(s);
+const drawer=$('#drawer'),backdrop=$('#backdrop');
+function toggleMenu(open){
+  drawer.classList.toggle('open',open);
+  backdrop.classList.toggle('open',open);
+  drawer.setAttribute('aria-hidden',String(!open));
+  document.body.style.overflow=open?'hidden':'';
+}
+$('#menuButton').onclick=()=>toggleMenu(true);
+$('#closeMenu').onclick=()=>toggleMenu(false);
+backdrop.onclick=()=>toggleMenu(false);
+document.querySelectorAll('.drawer a').forEach(a=>a.onclick=()=>toggleMenu(false));
+
+const modal=$('#searchModal');
+$('#searchButton').onclick=()=>{modal.classList.add('open');$('#searchInput').focus()};
+$('#closeSearch').onclick=()=>modal.classList.remove('open');
+modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('open')});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){toggleMenu(false);modal.classList.remove('open')}});
+
+let toastTimer;
+function toast(msg){
+  const el=$('#toast');
+  el.textContent=msg;
+  el.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>el.classList.remove('show'),3000);
+}
+$('#wishlistButton').onclick=()=>toast('Your wishlist has 1 silhouette.');
+$('#cartButton').onclick=()=>toast('Your shopping bag has 1 silhouette.');
+
+const philosophy=$('.philosophy-hotspot');
+if(philosophy){
+  philosophy.onclick=()=>$('#story').scrollIntoView({behavior:'smooth'});
+  philosophy.onkeydown=e=>{if(e.key==='Enter')$('#story').scrollIntoView({behavior:'smooth'})};
+}
+$('#year').textContent=new Date().getFullYear();
+$('#enquire').onclick=e=>{e.preventDefault();toast('Add your business email or WhatsApp link to enable enquiries.')};
 </script>
-</body></html>
+</body>
+</html>
