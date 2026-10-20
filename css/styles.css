@@ -79,6 +79,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--c-parchment);
   color: var(--c-midnight);
+  overflow-x: hidden;
 }
 
 body {
@@ -516,8 +517,6 @@ img {
     height: 38px;
     font-size: 10px;
     letter-spacing: 1.2px;
-    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
   }
 
   .hero.hero-section {
