@@ -172,6 +172,8 @@
      05. SCROLL EFFECTS & STICKY HEADER
      -------------------------------------------------------------------------- */
   function setupScrollEffects() {
+    if (!els.header) return;
+
     let lastScrollY = window.scrollY;
 
     window.addEventListener('scroll', () => {
