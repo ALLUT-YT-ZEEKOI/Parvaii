@@ -174,27 +174,33 @@
   function setupScrollEffects() {
     if (!els.header) return;
 
-    let lastScrollY = window.scrollY;
-
     window.addEventListener('scroll', () => {
       const currentScrollY = window.scrollY;
 
-      if (currentScrollY > 120) {
+      if (currentScrollY > 80) {
         els.header.classList.add('header-scrolled');
-        if (currentScrollY > lastScrollY && currentScrollY > 300) {
-          // scrolling down
-          els.header.classList.add('header-hidden');
-        } else {
-          // scrolling up
-          els.header.classList.remove('header-hidden');
-        }
       } else {
         els.header.classList.remove('header-scrolled');
-        els.header.classList.remove('header-hidden');
       }
-
-      lastScrollY = currentScrollY;
     }, { passive: true });
+
+    // Maison Philosophy Hotspot overlay click
+    const philosophyHotspot = document.querySelector('.philosophy-hotspot');
+    if (philosophyHotspot) {
+      const scrollToStory = () => {
+        const target = document.getElementById('story') || document.getElementById('weave');
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      };
+      philosophyHotspot.addEventListener('click', scrollToStory);
+      philosophyHotspot.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          scrollToStory();
+        }
+      });
+    }
   }
 
   function setupMenuDrawer() {
@@ -367,6 +373,17 @@
     if (els.wishlistCount) {
       els.wishlistCount.textContent = state.wishlist.length;
     }
+  }
+
+  const headerWishlistBtn = document.getElementById('headerWishlistBtn');
+  if (headerWishlistBtn) {
+    headerWishlistBtn.addEventListener('click', () => {
+      if (state.wishlist.length > 0) {
+        showToast(`Your atelier wishlist has ${state.wishlist.length} curated silhouette${state.wishlist.length > 1 ? 's' : ''}.`, 'heart');
+      } else {
+        showToast('Your atelier wishlist is currently empty.', 'heart');
+      }
+    });
   }
 
   /* --------------------------------------------------------------------------
