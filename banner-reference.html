@@ -17,9 +17,9 @@ button{cursor:pointer}
 .marquee span{padding-left:35px}
 @keyframes marquee{to{transform:translateX(-50%)}}
 
-.hero{position:relative;min-height:calc(100svh - 44px);overflow:hidden;background:#1b1c22;display:block}
-.hero-photo{position:absolute;inset:0;background-image:url('assets/images/banner-hero-seamless.png');background-position:center top;background-size:100% 100%;filter:brightness(.98)}
-.hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(5,12,24,.22),transparent 45%)}
+.hero{position:relative;min-height:calc(100svh - 44px);overflow:hidden;background:#0b162a;display:block}
+.hero-photo{position:absolute;inset:0;background-image:url('assets/IMG_20261004_111446.jpg');background-position:center 25%;background-size:cover;background-repeat:no-repeat;filter:brightness(.94) contrast(1.04)}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:2;background:linear-gradient(90deg,rgba(11,22,42,.90) 0%,rgba(11,22,42,.72) 30%,rgba(11,22,42,.22) 50%,rgba(11,22,42,.26) 55%,rgba(11,22,42,.65) 75%,rgba(11,22,42,.88) 100%),linear-gradient(180deg,rgba(11,22,42,.82) 0%,rgba(11,22,42,.22) 18%,transparent 36%,rgba(11,22,42,.40) 75%,#0b162a 100%),radial-gradient(ellipse at 50% 45%,transparent 32%,rgba(11,22,42,.45) 82%)}
 
 .nav{position:relative;z-index:10;height:140px;display:flex;align-items:center;justify-content:space-between;padding:0 7.34%}
 .icon-btn{border:0;background:transparent;color:#f7e9d6;padding:10px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;cursor:pointer;position:relative}
@@ -27,17 +27,33 @@ button{cursor:pointer}
 .nav-actions{display:flex;gap:13px;align-items:center}
 .badge-count{position:absolute;top:3px;right:3px;background:#0b162a;color:#e8d4bd;font-size:0.58rem;font-weight:700;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1px solid rgba(201,183,165,0.45)}
 
-.brand{position:absolute;left:50%;transform:translateX(-50%);top:50%;margin-top:-30px;text-align:center;text-decoration:none;display:flex;flex-direction:column;align-items:center;opacity:0;pointer-events:none;transition:opacity 0.3s ease}
+.brand{position:absolute;left:50%;transform:translateX(-50%);top:50%;margin-top:-24px;text-align:center;text-decoration:none;display:flex;flex-direction:column;align-items:center;opacity:1;pointer-events:auto;transition:opacity 0.3s ease}
 .brand img{height:48px;width:auto;object-fit:contain}
 
-.hero-content{position:relative;z-index:2;max-width:700px;margin:75px 0 0 7.9%;opacity:0;pointer-events:none}
-.hero-content h1{font:500 clamp(55px,5.3vw,105px)/.98 Cormorant Garamond,serif}
-.hero-content p{max-width:550px;line-height:1.8}
-.hero-mobile-cta{display:none}
+.hero-content{position:relative;z-index:4;max-width:650px;margin:60px 0 0 7.34%;opacity:1;pointer-events:auto}
+.hero-badge-wrap{display:inline-flex;align-items:center;gap:.5rem;padding:.38rem 1rem;border-radius:999px;background:rgba(11,22,42,.65);border:1px solid rgba(201,183,165,.45);backdrop-filter:blur(10px);margin-bottom:1.25rem}
+.hero-badge-dot{width:6px;height:6px;border-radius:50%;background:#c9b7a5;box-shadow:0 0 8px #c9b7a5}
+.hero-badge-text{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:#f4eee5;font-weight:600}
+.hero-content h1{font:500 clamp(48px,4.6vw,84px)/.98 Cormorant Garamond,serif;margin:0 0 1.25rem;letter-spacing:-.01em;text-shadow:0 2px 24px rgba(0,0,0,.7)}
+.hero-content h1 em{font-style:italic;font-weight:400;color:#dfc08a}
+.hero-content p{max-width:490px;line-height:1.7;font-size:clamp(.92rem,1.1vw,1.05rem);margin:0 0 2rem;color:rgba(249,246,242,.92);text-shadow:0 1px 10px rgba(0,0,0,.75)}
+.hero-action-row{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.hero-main-btn{display:inline-flex;align-items:center;justify-content:center;gap:.65rem;padding:.95rem 1.85rem;background:#c9b7a5;color:#0b162a;font-size:.74rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;border-radius:2px;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.45);transition:all .3s ease;border:1px solid #c9b7a5}
+.hero-main-btn:hover{background:#dfc08a;border-color:#dfc08a;transform:translateY(-2px);box-shadow:0 12px 30px rgba(223,192,138,.3)}
+.hero-action-divider{width:1px;height:28px;background:rgba(255,255,255,.22)}
+.hero-tagline-strip{font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:rgba(231,212,189,.9);margin:0;text-shadow:0 1px 6px rgba(0,0,0,.55)}
 
-.hero-links{position:absolute;z-index:5;left:7.89%;bottom:7.2%;display:flex;gap:20px}
-.hero-links a{display:block;width:clamp(230px,24.6vw,455px);height:clamp(50px,6.8vh,65px);color:transparent;text-decoration:none;cursor:pointer;border-radius:4px}
-.philosophy-hotspot{position:absolute;z-index:5;right:4%;top:37%;width:34%;height:41%;cursor:pointer;border-radius:4px}
+.hero-philosophy-card{position:absolute;z-index:5;right:6%;top:50%;transform:translateY(-38%);width:clamp(340px,28vw,460px);padding:1.85rem 2rem;background:linear-gradient(135deg,rgba(14,25,45,.88),rgba(11,22,42,.94));border:1px solid rgba(201,183,165,.28);border-radius:4px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 16px 40px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.08);cursor:pointer;transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease}
+.hero-philosophy-card:hover{transform:translateY(calc(-38% - 3px));border-color:rgba(201,183,165,.55);box-shadow:0 20px 48px rgba(0,0,0,.65)}
+.philosophy-card-eyebrow{display:block;font-size:.68rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#c9b7a5;margin-bottom:.85rem}
+.philosophy-card-quote{margin:0;font-family:Cormorant Garamond,serif;font-style:italic;font-weight:400;font-size:clamp(1.05rem,1.22vw,1.22rem);line-height:1.45;color:#f9f6f2}
+.philosophy-card-divider{height:1px;background:rgba(255,255,255,.14);margin:1.25rem 0 1rem}
+.philosophy-card-stats{display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center}
+.philosophy-stat{display:flex;flex-direction:column;padding:0 .5rem;border-right:1px solid rgba(255,255,255,.12)}
+.philosophy-stat:first-child{padding-left:0}
+.philosophy-stat:last-child{border-right:none;padding-right:0}
+.philosophy-stat .stat-number{font-family:Cormorant Garamond,serif;font-size:clamp(1.25rem,1.5vw,1.55rem);font-weight:500;line-height:1;color:#f9f6f2;margin-bottom:.35rem}
+.philosophy-stat .stat-label{font-size:.58rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#c9b7a5;white-space:nowrap}
 
 .drawer-backdrop{position:fixed;inset:0;z-index:120;background:rgba(0,0,0,.55);opacity:0;visibility:hidden;transition:.3s}
 .drawer-backdrop.open{opacity:1;visibility:visible}
@@ -74,8 +90,11 @@ button{cursor:pointer}
 @media(max-width:800px){
   .announcement{height:38px;font-size:10px;letter-spacing:1.2px}
   .hero{min-height:calc(100svh - 38px);display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;background:#0b162a}
-  .hero-photo{position:absolute;inset:0;background-image:url('assets/images/hero.jpg');background-size:cover;background-position:48% top;filter:brightness(0.96)}
-  .hero::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:2;background:linear-gradient(180deg,rgba(11,22,42,0.62) 0%,rgba(11,22,42,0.2) 20%,rgba(11,22,42,0.52) 55%,rgba(11,22,42,0.88) 88%,#0b162a 100%),radial-gradient(ellipse at 50% 55%,rgba(11,22,42,0.45) 0%,transparent 75%)}
+  .hero-photo{position:absolute;inset:0;background-image:url('assets/IMG_20261004_111446.jpg');background-size:cover;background-position:50% 20%;filter:brightness(0.94) contrast(1.04)}
+  .hero::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:2;background:linear-gradient(180deg,rgba(11,22,42,0.70) 0%,rgba(11,22,42,0.35) 20%,rgba(11,22,42,0.65) 55%,rgba(11,22,42,0.92) 85%,#0b162a 100%),radial-gradient(ellipse at 50% 50%,rgba(11,22,42,0.45) 0%,transparent 80%)}
+  .hero-philosophy-card{display:none!important}
+  .hero-action-divider{display:none!important}
+  .hero-action-row{display:flex;flex-direction:column;gap:0.85rem;width:100%;align-items:center}
 
   .nav{position:relative;z-index:10;padding:0 1.25rem;height:80px;display:flex;align-items:center;justify-content:space-between;width:100%}
   .brand{position:absolute;left:50%;transform:translateX(-50%);top:50%;margin-top:-20px;opacity:1!important;pointer-events:auto!important;display:flex;align-items:center;justify-content:center}
@@ -152,19 +171,37 @@ button{cursor:pointer}
     </div>
     <h1>The Poetry of<br><em>Silhouette &amp;</em><br>Pure Weave.</h1>
     <p class="hero-desc">Rooted in Indian handloom heritage. Reimagined in midnight navy and champagne sand silks.</p>
-    <p class="hero-tagline-strip">SILK &nbsp;•&nbsp; HERITAGE &nbsp;•&nbsp; MODERNITY</p>
-    <div class="hero-mobile-cta">
+    <div class="hero-action-row">
       <a href="#collection" class="hero-main-btn" aria-label="Explore the collection">
         <span>EXPLORE THE COLLECTION</span>
         <span>→</span>
       </a>
+      <span class="hero-action-divider" aria-hidden="true"></span>
+      <p class="hero-tagline-strip">SILK &nbsp;•&nbsp; HERITAGE &nbsp;•&nbsp; MODERNITY</p>
     </div>
   </div>
 
-  <div class="hero-links">
-    <a href="#collection" aria-label="Explore the collection">Explore collection</a>
-  </div>
-  <div class="philosophy-hotspot" title="Discover our philosophy" role="button" tabindex="0" aria-label="Discover our philosophy"></div>
+  <aside class="hero-philosophy-card philosophy-hotspot" id="heroPhilosophyCard" role="button" tabindex="0" title="Discover our philosophy" aria-label="Discover our philosophy">
+    <span class="philosophy-card-eyebrow">MAISON PHILOSOPHY</span>
+    <blockquote class="philosophy-card-quote">
+      &ldquo;A kurti is not merely attire; it is an architectural dialogue between the artisan&rsquo;s hand and the wearer&rsquo;s grace.&rdquo;
+    </blockquote>
+    <div class="philosophy-card-divider" aria-hidden="true"></div>
+    <div class="philosophy-card-stats">
+      <div class="philosophy-stat">
+        <span class="stat-number">140s</span>
+        <span class="stat-label">SILK COUNT</span>
+      </div>
+      <div class="philosophy-stat">
+        <span class="stat-number">72 hrs</span>
+        <span class="stat-label">HAND ZARDOZI</span>
+      </div>
+      <div class="philosophy-stat">
+        <span class="stat-number">100%</span>
+        <span class="stat-label">ORGANIC DYE</span>
+      </div>
+    </div>
+  </aside>
 </section>
 
 <section class="section" id="collection">

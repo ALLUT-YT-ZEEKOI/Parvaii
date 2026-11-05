@@ -15,33 +15,33 @@
   const CATALOG = [
     {
       id: 'parvaii-01',
-      title: 'The Chandrika Zari Kurti',
-      subtitle: 'Pure Chanderi Handloom Silk with Navy Floral Threadwork',
+      title: 'The Sunlit Floral Kurti',
+      subtitle: 'Mustard Yellow Block-Print Cotton Kurti',
       category: 'straight',
       fabric: 'chanderi',
       price: 245,
-      image: 'assets/images/kurti-chanderi.jpg',
+      image: 'assets/images/kurti-yellow-floral.jpg',
       badge: 'Bestseller',
-      craft: 'Handcrafted Zardozi & Resham Embroidery',
+      craft: 'Hand Block-Printed Floral Motifs',
       colors: ['#C9B7A5', '#0B162A'],
       sizes: ['XS', 'S', 'M', 'L', 'XL'],
-      description: 'Woven in the historic looms of Chanderi, this straight-cut luxury kurti merges raw champagne sand silk with hand-embellished midnight navy motifs along the yoke and scalloped sleeves.',
+      description: 'A radiant mustard yellow kurti adorned with delicate hand block-printed floral motifs. Lightweight, breathable cotton that drapes beautifully for every occasion.',
       origin: 'Chanderi, Madhya Pradesh',
-      care: 'Dry clean only. Store wrapped in pure muslin cloth.'
+      care: 'Hand wash in cold water. Dry in shade.'
     },
     {
       id: 'parvaii-02',
-      title: 'The Nilambari Royal Anarkali',
-      subtitle: 'Flared Midnight Silk Gown Kurti with Champagne Border',
+      title: 'The Midnight Bloom Kurti',
+      subtitle: 'Navy Blue Floral Vine Long-Sleeve Kurti',
       category: 'anarkali',
       fabric: 'silk',
       price: 360,
-      image: 'assets/images/kurti-anarkali.jpg',
+      image: 'assets/images/kurti-navy-floral.jpg',
       badge: 'Heritage',
-      craft: 'Hand-Pleated Kalidar Cut with Sheer Organza Drape',
+      craft: 'Intricate Floral Vine Embroidery with Keyhole Neckline',
       colors: ['#0B162A', '#C9B7A5'],
       sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-      description: 'An architectural 24-kali flared Anarkali rendered in nocturnal midnight navy silk. Finished with artisanal champagne sand hem borders and a featherweight silk organza dupatta.',
+      description: 'Deep midnight navy with an elegant allover floral vine print. Features a distinctive keyhole neckline and full sleeves — a refined silhouette for modern grace.',
       origin: 'Varanasi Weavers Guild',
       care: 'Specialist dry clean only.'
     },
@@ -70,11 +70,11 @@
     cart: [
       {
         id: 'parvaii-01',
-        title: 'The Chandrika Zari Kurti',
+        title: 'The Sunlit Floral Kurti',
         price: 245,
         size: 'M',
-        color: 'Champagne Sand',
-        image: 'assets/images/kurti-chanderi.jpg',
+        color: 'Mustard Yellow',
+        image: 'assets/images/kurti-yellow-floral.jpg',
         quantity: 1
       }
     ],
@@ -166,6 +166,50 @@
     setupPromoCode();
     setupCheckoutModal();
     setupScrollReveals();
+    setupHeroBanner();
+  }
+
+  /* --------------------------------------------------------------------------
+     04b. HERO BANNER SLIDER & INTERACTIONS
+     -------------------------------------------------------------------------- */
+  function setupHeroBanner() {
+    let currentHeroSlide = 0;
+    const totalHeroSlides = 5;
+    const slideNumberEl = document.getElementById('heroSlideNumber');
+    const progressFillEl = document.getElementById('heroProgressFill');
+    const prevBtn = document.getElementById('heroPrevBtn');
+    const nextBtn = document.getElementById('heroNextBtn');
+
+    function updateHeroSlide(index) {
+      currentHeroSlide = (index + totalHeroSlides) % totalHeroSlides;
+      if (slideNumberEl) {
+        slideNumberEl.innerHTML = `${String(currentHeroSlide + 1).padStart(2, '0')} <small>/ 05</small>`;
+      }
+      if (progressFillEl) {
+        const pct = (currentHeroSlide + 1) * 20;
+        progressFillEl.style.width = `${pct}%`;
+        const bar = progressFillEl.parentElement;
+        if (bar) bar.setAttribute('aria-valuenow', pct);
+      }
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => updateHeroSlide(currentHeroSlide - 1));
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => updateHeroSlide(currentHeroSlide + 1));
+    }
+
+    // Keyboard navigation when not focused in input fields
+    document.addEventListener('keydown', (e) => {
+      const activeTag = document.activeElement ? document.activeElement.tagName.toLowerCase() : '';
+      if (activeTag === 'input' || activeTag === 'textarea' || activeTag === 'select') return;
+      if (els.searchModal && els.searchModal.classList.contains('active')) return;
+      if (els.quickviewModal && els.quickviewModal.classList.contains('active')) return;
+
+      if (e.key === 'ArrowRight') updateHeroSlide(currentHeroSlide + 1);
+      if (e.key === 'ArrowLeft') updateHeroSlide(currentHeroSlide - 1);
+    });
   }
 
   /* --------------------------------------------------------------------------
@@ -644,6 +688,7 @@
      12. ADVANCED FEATURE 3: SMART FIT & SIZE RECOMMENDER
      -------------------------------------------------------------------------- */
   function setupFitFinder() {
+    if (!els.bustSlider) return;
     let currentFitPref = 'comfort';
 
     function recalculateSize() {
