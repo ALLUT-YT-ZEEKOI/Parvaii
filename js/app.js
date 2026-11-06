@@ -46,6 +46,23 @@
       description: 'A beautiful addition to your everyday wardrobe. Easy to style, comfortable to wear, and perfect for days when you want to feel effortlessly put together. Attached Sleeves included.',
       origin: 'Trivandrum Atelier',
       care: 'Hand wash in cold water. Dry in shade.'
+    },
+    {
+      id: 'parvaii-03',
+      title: 'The Indigo Bloom Dress',
+      subtitle: 'A breezy printed midi silhouette for effortless charm.',
+      category: 'dresses',
+      fabric: 'cotton',
+      price: 399,
+      image: 'assets/images/kurti-blue-dress.jpg',
+      badge: 'LIMITED DROP',
+      spec: 'Printed Midi',
+      craft: 'Sleeveless Midi • Pure Soft Cotton',
+      colors: ['#1B2E4B'],
+      sizes: ['XS', 'S', 'M', 'L', 'XL'],
+      description: 'A beautiful blue printed midi silhouette designed to bring everyday ease and natural charm to your wardrobe. Lightweight, breathable, and gracefully tailored.',
+      origin: 'Trivandrum Atelier',
+      care: 'Gentle hand wash in cold water.'
     }
   ];
 
@@ -285,50 +302,32 @@
                     aria-label="Save to Wishlist" 
                     data-action="wishlist" 
                     data-id="${product.id}">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="${isWishlisted ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="${isWishlisted ? 'currentColor' : 'none'}" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
               </svg>
             </button>
             <img src="${product.image}" alt="${product.title}" class="product-img" loading="lazy">
-            <div class="card-quick-actions">
-              <div class="card-size-picker">
-                ${product.sizes.map(size => `
-                  <button class="size-pill-btn" data-action="quick-add" data-id="${product.id}" data-size="${size}">
-                    ${size}
-                  </button>
-                `).join('')}
-              </div>
-              <button class="quick-view-btn" data-action="quick-view" data-id="${product.id}">
-                Quick Look & Craft Story
-              </button>
+            <div class="card-hover-action" data-action="quick-view" data-id="${product.id}">
+              <span>✦ Quick Look & Sizing</span>
             </div>
           </div>
           <div class="product-info">
-            <div class="product-meta">
-              <span class="product-category-tag">${product.badge}</span>
-              <span class="product-size-range">Sizes: XS – XL</span>
-            </div>
+            <span class="product-eyebrow">${product.spec}</span>
             <h3 class="product-title">${product.title}</h3>
-            <p class="product-card-subtitle">${product.subtitle}</p>
-            <div class="product-spec-pill">
-              <span>✦ ${product.spec}</span>
+            <p class="product-subtitle">${product.craft || product.subtitle}</p>
+            <div class="product-meta-row">
+              <span class="product-price">₹${product.price}</span>
+              <span class="product-sizes-badge">Sizes: XS – XL</span>
             </div>
-            <div class="product-price-row">
-              <div class="price-stack">
-                <span class="product-price-label">Price</span>
-                <span class="product-price">₹${product.price}</span>
-              </div>
-              <div class="product-buttons-row">
-                <button class="btn-card-details" data-action="quick-view" data-id="${product.id}" aria-label="View Details for ${product.title}">
-                  View Details
-                </button>
-                <button class="btn-card-order add-bag-link" data-action="quick-add" data-id="${product.id}" data-size="${product.sizes[0]}" aria-label="Order Now ${product.title}">
-                  <span>Order Now</span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M5 12h14M12 5l7 7-7 7"/>
-                  </svg>
-                </button>
-              </div>
+            <div class="product-card-divider"></div>
+            <div class="product-card-actions">
+              <button class="btn-card-details" data-action="quick-view" data-id="${product.id}" aria-label="View Details for ${product.title}">
+                <span>View Details</span>
+              </button>
+              <button class="btn-card-order" data-action="quick-add" data-id="${product.id}" data-size="${product.sizes[0]}" aria-label="Order Now ${product.title}">
+                <span>Order Now</span>
+                <span class="btn-arrow">→</span>
+              </button>
             </div>
           </div>
         </article>
@@ -1052,12 +1051,14 @@
   }
 
   /* --------------------------------------------------------------------------
-     18. PARVAII LUXURY 360 INTERACTIVE VIEWER
+     18. PARVAII LUXURY 360 INTERACTIVE VIEWER & 3D GLB STUDIO
      -------------------------------------------------------------------------- */
   function setupLuxury360() {
     const section = document.getElementById('luxury-360');
     if (!section) return;
 
+    const stage = section.querySelector('.stage');
+    const modelViewer = section.querySelector('#kurti3d');
     const turner = section.querySelector('#turner');
     const product = section.querySelector('#product');
     const rotateBtn = section.querySelector('#rotateBtn');
@@ -1068,12 +1069,47 @@
     const detailImage = document.getElementById('detailImage');
     const closeDetail = document.getElementById('closeDetail');
 
-    if (!turner || !product) return;
+    let is3dActive = false;
 
+    // Synchronize 3D model-viewer events
+    if (modelViewer) {
+      modelViewer.addEventListener('load', () => {
+        is3dActive = true;
+        if (stage) stage.classList.add('has-3d-model');
+        if (rotateBtn) rotateBtn.setAttribute('aria-pressed', 'true');
+      });
+
+      modelViewer.addEventListener('error', (err) => {
+        console.warn('3D Model Viewer error, falling back to 2D view:', err);
+        is3dActive = false;
+        if (stage) stage.classList.remove('has-3d-model');
+      });
+
+      // Synchronize front/back thumbnail active states with 3D camera orbit
+      modelViewer.addEventListener('camera-change', () => {
+        if (!is3dActive) return;
+        try {
+          const orbit = modelViewer.getCameraOrbit();
+          if (orbit) {
+            // orbit.theta is in radians
+            const deg = ((orbit.theta * 180 / Math.PI) % 360 + 360) % 360;
+            const side = (deg >= 90 && deg < 270) ? 'back' : 'front';
+            thumbs.forEach(t => {
+              if (t.dataset.view === 'front' || t.dataset.view === 'back') {
+                t.classList.toggle('active', t.dataset.view === side);
+              }
+            });
+          }
+        } catch (_) {}
+      });
+    }
+
+    // 2D fallback state variables
     let angle = 0, scale = 1, auto = false, drag = false, startX = 0, startAngle = 0, raf = 0, last = 0;
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    function render(immediate = false) {
+    function render2D(immediate = false) {
+      if (!turner) return;
       turner.style.transition = immediate ? 'none' : '';
       turner.style.transform = `rotateY(${angle}deg) scale(${scale})`;
       const normAngle = ((angle % 360) + 360) % 360;
@@ -1085,99 +1121,93 @@
       });
     }
 
-    function stopAuto() {
+    function stopAuto2D() {
       auto = false;
       if (rotateBtn) rotateBtn.setAttribute('aria-pressed', 'false');
       cancelAnimationFrame(raf);
     }
 
-    function tick(time) {
+    function tick2D(time) {
       if (!auto) return;
       if (last) angle += (time - last) * 0.012;
       last = time;
-      render(true);
-      raf = requestAnimationFrame(tick);
+      render2D(true);
+      raf = requestAnimationFrame(tick2D);
     }
 
+    // 1. Rotate Button (Toggle 360° Auto-Rotation)
     if (rotateBtn) {
       rotateBtn.addEventListener('click', () => {
+        if (is3dActive && modelViewer) {
+          modelViewer.autoRotate = !modelViewer.autoRotate;
+          rotateBtn.setAttribute('aria-pressed', String(modelViewer.autoRotate));
+          return;
+        }
+
         if (reduced) {
           angle += 180;
-          render();
+          render2D();
           return;
         }
         auto = !auto;
         rotateBtn.setAttribute('aria-pressed', String(auto));
         if (auto) {
           last = 0;
-          raf = requestAnimationFrame(tick);
+          raf = requestAnimationFrame(tick2D);
         } else {
           cancelAnimationFrame(raf);
         }
       });
     }
 
+    // 2. Zoom Button
     if (zoomBtn) {
       zoomBtn.addEventListener('click', () => {
+        if (is3dActive && modelViewer) {
+          const isZoomed = modelViewer.dataset.zoomed === 'true';
+          if (isZoomed) {
+            modelViewer.cameraOrbit = '0deg 75deg 105%';
+            modelViewer.dataset.zoomed = 'false';
+            zoomBtn.setAttribute('aria-pressed', 'false');
+          } else {
+            modelViewer.cameraOrbit = '0deg 75deg 70%';
+            modelViewer.dataset.zoomed = 'true';
+            zoomBtn.setAttribute('aria-pressed', 'true');
+          }
+          return;
+        }
+
         scale = scale === 1 ? 1.35 : 1;
         zoomBtn.setAttribute('aria-pressed', String(scale > 1));
-        render();
+        render2D();
       });
     }
 
+    // 3. Reset Button
     if (resetBtn) {
       resetBtn.addEventListener('click', () => {
-        stopAuto();
+        if (is3dActive && modelViewer) {
+          modelViewer.cameraOrbit = '0deg 75deg 105%';
+          modelViewer.autoRotate = true;
+          modelViewer.dataset.zoomed = 'false';
+          if (rotateBtn) rotateBtn.setAttribute('aria-pressed', 'true');
+          if (zoomBtn) zoomBtn.setAttribute('aria-pressed', 'false');
+          thumbs.forEach(t => {
+            if (t.dataset.view === 'front') t.classList.add('active');
+            if (t.dataset.view === 'back') t.classList.remove('active');
+          });
+          return;
+        }
+
+        stopAuto2D();
         angle = 0;
         scale = 1;
         if (zoomBtn) zoomBtn.setAttribute('aria-pressed', 'false');
-        render();
+        render2D();
       });
     }
 
-    product.addEventListener('pointerdown', e => {
-      if (e.button !== 0) return;
-      stopAuto();
-      drag = true;
-      startX = e.clientX;
-      startAngle = angle;
-      product.setPointerCapture(e.pointerId);
-      turner.style.transition = 'none';
-    });
-
-    product.addEventListener('pointermove', e => {
-      if (!drag) return;
-      angle = startAngle + (e.clientX - startX) * 0.65;
-      render(true);
-    });
-
-    function finish() {
-      drag = false;
-      turner.style.transition = '';
-    }
-
-    product.addEventListener('pointerup', finish);
-    product.addEventListener('pointercancel', finish);
-
-    product.addEventListener('keydown', e => {
-      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
-        e.preventDefault();
-        stopAuto();
-        angle += (e.key === 'ArrowRight' ? 30 : -30);
-        render();
-      }
-    });
-
-    product.addEventListener('wheel', e => {
-      if (document.activeElement === product || e.ctrlKey || e.metaKey) {
-        e.preventDefault();
-        scale = Math.min(1.7, Math.max(0.75, scale + (e.deltaY < 0 ? 0.1 : -0.1)));
-        if (zoomBtn) zoomBtn.setAttribute('aria-pressed', String(scale > 1));
-        render();
-      }
-    }, { passive: false });
-
-    // Thumbnails
+    // 4. Thumbnails (Front / Back / Fabric Details / Side Detail)
     thumbs.forEach(t => {
       t.addEventListener('click', () => {
         if (t.dataset.view === 'detail') {
@@ -1187,12 +1217,70 @@
           }
           return;
         }
-        stopAuto();
+
+        if (is3dActive && modelViewer) {
+          modelViewer.autoRotate = false;
+          if (rotateBtn) rotateBtn.setAttribute('aria-pressed', 'false');
+          const targetOrbit = t.dataset.view === 'back' ? '180deg 75deg 105%' : '0deg 75deg 105%';
+          modelViewer.cameraOrbit = targetOrbit;
+          thumbs.forEach(other => other.classList.toggle('active', other === t));
+          return;
+        }
+
+        stopAuto2D();
         angle = t.dataset.view === 'back' ? 180 : 0;
-        render();
+        render2D();
       });
     });
 
+    // 2D Fallback Drag handlers
+    if (product) {
+      product.addEventListener('pointerdown', e => {
+        if (e.button !== 0 || is3dActive) return;
+        stopAuto2D();
+        drag = true;
+        startX = e.clientX;
+        startAngle = angle;
+        product.setPointerCapture(e.pointerId);
+        if (turner) turner.style.transition = 'none';
+      });
+
+      product.addEventListener('pointermove', e => {
+        if (!drag || is3dActive) return;
+        angle = startAngle + (e.clientX - startX) * 0.65;
+        render2D(true);
+      });
+
+      function finish() {
+        drag = false;
+        if (turner) turner.style.transition = '';
+      }
+
+      product.addEventListener('pointerup', finish);
+      product.addEventListener('pointercancel', finish);
+
+      product.addEventListener('keydown', e => {
+        if (is3dActive) return;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+          e.preventDefault();
+          stopAuto2D();
+          angle += (e.key === 'ArrowRight' ? 30 : -30);
+          render2D();
+        }
+      });
+
+      product.addEventListener('wheel', e => {
+        if (is3dActive) return;
+        if (document.activeElement === product || e.ctrlKey || e.metaKey) {
+          e.preventDefault();
+          scale = Math.min(1.7, Math.max(0.75, scale + (e.deltaY < 0 ? 0.1 : -0.1)));
+          if (zoomBtn) zoomBtn.setAttribute('aria-pressed', String(scale > 1));
+          render2D();
+        }
+      }, { passive: false });
+    }
+
+    // Modal Handlers
     if (closeDetail && overlay) {
       closeDetail.addEventListener('click', () => {
         overlay.hidden = true;
@@ -1211,7 +1299,7 @@
       }
     });
 
-    render();
+    render2D();
   }
 
   // Run when DOM is ready
