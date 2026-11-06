@@ -15,11 +15,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="css/styles.css?v=20261105-fullbleed-banner">
+  <link rel="stylesheet" href="css/styles.css?v=20261106-luxury-360">
 </head>
 
 <body>
@@ -54,6 +54,7 @@
       <a href="#collections" class="menu-link">Collections</a>
       <a href="#upcoming" class="menu-link">Upcoming Drops <span class="nav-badge">Preview</span></a>
       <a href="#weave" class="menu-link">Weave Heritage</a>
+      <a href="#luxury-360" class="menu-link">360° Studio <span class="nav-badge">Interactive</span></a>
       <a href="#story" class="menu-link">Our Story</a>
     </nav>
   </aside>
@@ -407,6 +408,61 @@ UPCOMING PRODUCTS (NEXT LOOM PREVIEW)
     </section>
 
     <!-- ========================================================================
+         PARVAII LUXURY 360 VIEWER — INTERACTIVE SILHOUETTE
+         ======================================================================== -->
+    <section class="luxury-360-section" id="luxury-360" aria-label="Interactive 360 Garment Viewer">
+      <div class="scene">
+        <div class="leaf leaf-one" aria-hidden="true"></div>
+        <div class="leaf leaf-two" aria-hidden="true"></div>
+        <div class="sunbeam" aria-hidden="true"></div>
+
+        <section class="copy">
+          <div class="brand">PARVAII <small>COLLECTION</small></div>
+          <p class="eyebrow">THE EVERYDAY EDIT / 01</p>
+          <h2 class="viewer-title">The Sunlit<br>Floral Top</h2>
+          <div class="gold-line" aria-hidden="true"></div>
+          <p class="desc">A breezy everyday staple<br>with timeless charm.</p>
+          <div class="actions">
+            <button type="button" id="rotateBtn" aria-label="Toggle automatic rotation"><span>⟳</span>360° View</button>
+            <button type="button" id="zoomBtn" aria-label="Zoom garment"><span>⌕</span>Zoom</button>
+            <button type="button" id="resetBtn" aria-label="Reset view"><span>↺</span>Reset</button>
+          </div>
+          <p class="hint">Drag to rotate · Tap a thumbnail to explore</p>
+        </section>
+
+        <section class="stage" aria-label="Interactive product viewer">
+          <div class="halo" aria-hidden="true"></div>
+          <div class="orbit" aria-hidden="true"><span class="orbit-left">➤</span><span class="orbit-right">➤</span></div>
+          <div class="product" id="product" role="img" aria-label="Yellow floral PARVAII top, rotating front and back" tabindex="0">
+            <div class="turner" id="turner">
+              <img class="face front" src="assets/luxury_360/front.png" alt="Yellow floral top front">
+              <img class="face back" src="assets/luxury_360/back.png" alt="Yellow floral top back">
+            </div>
+          </div>
+          <div class="shadow" aria-hidden="true"></div>
+          <div class="pedestal" aria-hidden="true"></div>
+          <div class="view-tag" aria-hidden="true">360°<small>VIEW</small></div>
+        </section>
+
+        <aside class="thumbs" aria-label="Product views">
+          <button type="button" class="thumb active" data-view="front" aria-label="Front view"><img src="assets/luxury_360/front.png" alt="Front"></button>
+          <button type="button" class="thumb" data-view="back" aria-label="Back view"><img src="assets/luxury_360/back.png" alt="Back"></button>
+          <button type="button" class="thumb" data-view="detail" data-image="assets/luxury_360/detail-side.png" aria-label="Side detail"><img src="assets/luxury_360/detail-side.png" alt="Side tie detail"></button>
+          <button type="button" class="thumb" data-view="detail" data-image="assets/luxury_360/detail-fabric.png" aria-label="Fabric detail"><img src="assets/luxury_360/detail-fabric.png" alt="Floral fabric detail"></button>
+        </aside>
+
+        <div class="flowers" aria-hidden="true">✿<span>✿</span><i>✿</i></div>
+        <div class="footer-label">PARVAII · MADE TO BE LOVED</div>
+      </div>
+    </section>
+
+    <!-- Detail Overlay Modal for 360 Viewer -->
+    <div class="detail-overlay luxury-360-detail-overlay" id="detailOverlay" hidden>
+      <button type="button" id="closeDetail" aria-label="Close detail">×</button>
+      <img id="detailImage" alt="Garment detail">
+    </div>
+
+    <!-- ========================================================================
          THE STORY BEHIND PARVAII (FOUNDER'S JOURNAL)
          ======================================================================== -->
     <section class="section-pad brand-story-section" id="story">
@@ -725,7 +781,7 @@ UPCOMING PRODUCTS (NEXT LOOM PREVIEW)
   <div class="toast-container" id="toastContainer" aria-live="polite"></div>
 
   <!-- Application Script -->
-  <script src="js/app.js"></script>
+  <script src="js/app.js?v=20261106-luxury-360"></script>
 </body>
 
 </html>

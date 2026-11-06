@@ -1880,6 +1880,591 @@ img {
 }
 
 /* --------------------------------------------------------------------------
+   10. PARVAII LUXURY 360 VIEWER
+   -------------------------------------------------------------------------- */
+.luxury-360-section {
+  position: relative;
+  isolation: isolate;
+  background: radial-gradient(ellipse at 50% 48%, #f5e8dc 0%, #e9d6c8 48%, #cdb6a7 100%);
+  overflow: hidden;
+  border-top: 1px solid rgba(200, 161, 98, 0.25);
+  border-bottom: 1px solid rgba(200, 161, 98, 0.25);
+  font-family: 'Montserrat', var(--font-sans), sans-serif;
+  color: #29221d;
+}
+
+.luxury-360-section .scene {
+  position: relative;
+  isolation: isolate;
+  min-height: 780px;
+  height: 90vh;
+  max-height: 980px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(280px, 30%) 1fr 145px;
+  align-items: center;
+  padding: 42px clamp(28px, 6vw, 120px);
+  gap: 12px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.luxury-360-section .scene::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.32), transparent 42%),
+              radial-gradient(ellipse at 94% 12%, rgba(83, 62, 43, 0.20), transparent 37%);
+}
+
+.luxury-360-section .sunbeam {
+  position: absolute;
+  inset: -20% -10% auto auto;
+  width: 58%;
+  height: 90%;
+  background: linear-gradient(130deg, transparent 0%, rgba(255, 255, 255, 0.26) 30%, transparent 34%, rgba(255, 255, 255, 0.2) 45%, transparent 51%);
+  transform: rotate(-12deg);
+  pointer-events: none;
+}
+
+.luxury-360-section .leaf {
+  position: absolute;
+  width: 350px;
+  height: 280px;
+  filter: blur(12px);
+  opacity: 0.28;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 40% 20%, #455b28 0 11%, transparent 12%),
+              radial-gradient(ellipse at 65% 35%, #3d5127 0 14%, transparent 15%),
+              radial-gradient(ellipse at 25% 64%, #536b35 0 15%, transparent 16%),
+              radial-gradient(ellipse at 85% 80%, #55632d 0 12%, transparent 13%);
+}
+
+.luxury-360-section .leaf-one {
+  top: -120px;
+  left: -60px;
+  transform: rotate(-35deg);
+}
+
+.luxury-360-section .leaf-two {
+  right: -160px;
+  top: -80px;
+  transform: rotate(35deg);
+}
+
+.luxury-360-section .copy {
+  position: relative;
+  z-index: 5;
+  align-self: center;
+  margin-top: -10px;
+}
+
+.luxury-360-section .brand {
+  font-family: 'Cormorant Garamond', var(--font-display), Georgia, serif;
+  font-size: 43px;
+  letter-spacing: 0.22em;
+  line-height: 1;
+  text-align: left;
+  color: #29221d;
+}
+
+.luxury-360-section .brand small {
+  display: block;
+  font-family: 'Montserrat', var(--font-sans), sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.58em;
+  margin: 12px 0 90px 26px;
+  color: #7a6352;
+}
+
+.luxury-360-section .eyebrow {
+  font-family: 'Montserrat', var(--font-sans), sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  color: #94765d;
+  margin: 0 0 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.luxury-360-section .viewer-title {
+  font-family: 'Cormorant Garamond', var(--font-display), Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(54px, 5vw, 86px);
+  line-height: 0.94;
+  letter-spacing: -0.035em;
+  margin: 0;
+  white-space: nowrap;
+  color: #29221d;
+}
+
+.luxury-360-section .gold-line {
+  width: 90px;
+  height: 3px;
+  background: #d89c24;
+  margin: 32px 0 28px;
+}
+
+.luxury-360-section .desc {
+  font-family: 'Montserrat', var(--font-sans), sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  letter-spacing: 0.015em;
+  color: #3b3027;
+  margin: 0;
+}
+
+.luxury-360-section .actions {
+  display: flex;
+  gap: 21px;
+  margin-top: 55px;
+}
+
+.luxury-360-section .actions button {
+  border: 0;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Montserrat', var(--font-sans), sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  cursor: pointer;
+  color: #2d241d;
+  white-space: nowrap;
+  padding: 0;
+  box-shadow: none;
+}
+
+.luxury-360-section .actions button span {
+  display: grid;
+  place-items: center;
+  border: 1px solid #a38c7b;
+  border-radius: 50%;
+  width: 54px;
+  height: 54px;
+  font-family: Georgia, serif;
+  font-size: 32px;
+  transition: background 0.2s, transform 0.2s, border-color 0.2s;
+  color: #2d241d;
+}
+
+.luxury-360-section .actions button:hover span,
+.luxury-360-section .actions button[aria-pressed="true"] span {
+  background: #fff8ee;
+  border-color: #5a4435;
+  transform: translateY(-3px);
+}
+
+.luxury-360-section .hint {
+  font-family: 'Montserrat', var(--font-sans), sans-serif;
+  font-size: 10px;
+  color: #8b7464;
+  margin-top: 35px;
+  line-height: 1.7;
+}
+
+.luxury-360-section .stage {
+  height: 100%;
+  min-height: 680px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1100px;
+  touch-action: pan-y;
+}
+
+.luxury-360-section .halo {
+  position: absolute;
+  top: 13%;
+  left: 15%;
+  width: 70%;
+  height: 66%;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(255, 249, 236, 0.45), transparent 70%);
+}
+
+.luxury-360-section .product {
+  position: absolute;
+  z-index: 3;
+  top: 2%;
+  height: 85%;
+  width: 100%;
+  cursor: grab;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: pan-y;
+  outline-offset: -10px;
+}
+
+.luxury-360-section .product:active {
+  cursor: grabbing;
+}
+
+.luxury-360-section .turner {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  transform-style: preserve-3d;
+  transition: transform 2.4s cubic-bezier(0.25, 0.1, 0.2, 1);
+  will-change: transform;
+}
+
+.luxury-360-section .face {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  backface-visibility: hidden;
+  filter: drop-shadow(10px 22px 14px rgba(75, 47, 24, 0.16));
+  user-select: none;
+  pointer-events: none;
+}
+
+.luxury-360-section .face.back {
+  transform: rotateY(180deg);
+}
+
+.luxury-360-section .orbit {
+  position: absolute;
+  top: 53%;
+  width: min(100%, 660px);
+  height: 105px;
+  border: 3px solid rgba(255, 255, 255, 0.87);
+  border-radius: 50%;
+  transform: rotate(-3deg);
+  z-index: 4;
+  pointer-events: none;
+  border-top-color: transparent;
+}
+
+.luxury-360-section .orbit span {
+  position: absolute;
+  color: #fff;
+  font-size: 27px;
+  top: 6px;
+}
+
+.luxury-360-section .orbit-left {
+  left: 11%;
+  transform: rotate(-25deg);
+}
+
+.luxury-360-section .orbit-right {
+  right: 11%;
+  transform: rotate(155deg);
+}
+
+.luxury-360-section .view-tag {
+  position: absolute;
+  z-index: 5;
+  right: 0;
+  top: 46%;
+  font-family: 'Cormorant Garamond', var(--font-display), Georgia, serif;
+  font-size: 50px;
+  line-height: 1;
+  text-align: center;
+  pointer-events: none;
+  color: #29221d;
+}
+
+.luxury-360-section .view-tag small {
+  display: block;
+  font-family: 'Montserrat', var(--font-sans), sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 0.12em;
+}
+
+.luxury-360-section .pedestal {
+  position: absolute;
+  z-index: 1;
+  bottom: 1%;
+  left: 11%;
+  width: 78%;
+  height: 95px;
+  border-radius: 50% / 35%;
+  background: linear-gradient(95deg, #d4b8a2, #f2e1d0 35%, #d9c0ac 85%);
+  box-shadow: 0 25px 24px rgba(157, 130, 112, 0.4), inset 0 12px 13px #fff7e1;
+  border-bottom: 22px solid #c9ab96;
+}
+
+.luxury-360-section .shadow {
+  position: absolute;
+  z-index: 2;
+  bottom: 11%;
+  left: 28%;
+  width: 44%;
+  height: 25px;
+  background: rgba(116, 91, 70, 0.4);
+  filter: blur(15px);
+  border-radius: 50%;
+}
+
+.luxury-360-section .thumbs {
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+}
+
+.luxury-360-section .thumb {
+  width: 116px;
+  height: 122px;
+  border: 1px solid #fff8f1;
+  border-radius: 22px;
+  background: rgba(242, 227, 215, 0.72);
+  cursor: pointer;
+  padding: 7px;
+  box-shadow: 0 4px 16px rgba(126, 88, 75, 0.09);
+  transition: transform 0.2s, border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.luxury-360-section .thumb:hover {
+  transform: translateX(-4px);
+}
+
+.luxury-360-section .thumb.active {
+  border: 2px solid #44352a;
+}
+
+.luxury-360-section .thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.luxury-360-section .flowers {
+  position: absolute;
+  bottom: 12px;
+  left: 8px;
+  color: #fff9ec;
+  font-size: 70px;
+  text-shadow: 0 4px 8px rgba(110, 85, 77, 0.33);
+  opacity: 0.8;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.luxury-360-section .flowers span {
+  font-size: 35px;
+}
+
+.luxury-360-section .flowers i {
+  font-size: 23px;
+  font-style: normal;
+}
+
+.luxury-360-section .footer-label {
+  position: absolute;
+  right: 6%;
+  bottom: 12px;
+  font-family: 'Montserrat', var(--font-sans), sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.28em;
+  color: #9c8271;
+  pointer-events: none;
+}
+
+/* Detail overlay modal */
+.luxury-360-detail-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(33, 25, 17, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: grid;
+  place-items: center;
+  padding: 30px;
+}
+
+.luxury-360-detail-overlay[hidden] {
+  display: none !important;
+}
+
+.luxury-360-detail-overlay img {
+  max-height: 85vh;
+  max-width: 85vw;
+  object-fit: contain;
+  background: #e9d7c8;
+  border-radius: 18px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.luxury-360-detail-overlay button {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  color: white;
+  background: transparent;
+  border: 0;
+  font-size: 42px;
+  cursor: pointer;
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+.luxury-360-detail-overlay button:hover {
+  transform: scale(1.15);
+}
+
+/* Responsive styles */
+@media (max-width: 1000px) {
+  .luxury-360-section .scene {
+    grid-template-columns: 30% 1fr 95px;
+    padding: 25px;
+    min-height: 670px;
+  }
+  .luxury-360-section .brand {
+    font-size: 30px;
+  }
+  .luxury-360-section .brand small {
+    margin-bottom: 50px;
+  }
+  .luxury-360-section .thumb {
+    width: 85px;
+    height: 90px;
+  }
+  .luxury-360-section .viewer-title {
+    font-size: 55px;
+  }
+  .luxury-360-section .view-tag {
+    font-size: 32px;
+  }
+  .luxury-360-section .actions {
+    gap: 8px;
+  }
+  .luxury-360-section .actions button span {
+    width: 44px;
+    height: 44px;
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 700px) {
+  .luxury-360-section .scene {
+    height: auto;
+    max-height: none;
+    min-height: 840px;
+    display: flex;
+    flex-direction: column;
+    padding: 38px 20px 60px;
+    gap: 0;
+  }
+  .luxury-360-section .copy {
+    width: 100%;
+    text-align: center;
+    margin: 0;
+  }
+  .luxury-360-section .brand {
+    text-align: center;
+    font-size: 34px;
+  }
+  .luxury-360-section .brand small {
+    margin: 8px 0 24px;
+  }
+  .luxury-360-section .eyebrow {
+    margin-bottom: 10px;
+  }
+  .luxury-360-section .viewer-title {
+    font-size: 46px;
+    white-space: normal;
+  }
+  .luxury-360-section .gold-line {
+    margin: 16px auto;
+  }
+  .luxury-360-section .desc {
+    font-size: 14px;
+  }
+  .luxury-360-section .actions {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    margin: 25px auto 0;
+    justify-content: center;
+    z-index: 8;
+    gap: 22px;
+  }
+  .luxury-360-section .actions button {
+    font-size: 10px;
+  }
+  .luxury-360-section .actions button span {
+    width: 44px;
+    height: 44px;
+  }
+  .luxury-360-section .hint {
+    display: block;
+    margin-top: 15px;
+  }
+  .luxury-360-section .stage {
+    width: 100%;
+    height: 460px;
+    min-height: 460px;
+    margin-top: 25px;
+  }
+  .luxury-360-section .product {
+    top: 0;
+    height: 86%;
+  }
+  .luxury-360-section .orbit {
+    top: 51%;
+    height: 65px;
+  }
+  .luxury-360-section .view-tag {
+    font-size: 27px;
+    right: 0;
+    top: 43%;
+  }
+  .luxury-360-section .view-tag small {
+    font-size: 9px;
+  }
+  .luxury-360-section .pedestal {
+    height: 55px;
+    bottom: 4%;
+    border-bottom-width: 12px;
+  }
+  .luxury-360-section .shadow {
+    bottom: 14%;
+  }
+  .luxury-360-section .thumbs {
+    flex-direction: row;
+    gap: 10px;
+    margin-top: 15px;
+  }
+  .luxury-360-section .thumb {
+    width: 65px;
+    height: 70px;
+    border-radius: 13px;
+    padding: 4px;
+  }
+  .luxury-360-section .footer-label {
+    bottom: 8px;
+    font-size: 7px;
+  }
+  .luxury-360-section .flowers {
+    font-size: 34px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .luxury-360-section .turner {
+    transition: none !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
    11. BRAND STORY / FOUNDER'S JOURNAL
    -------------------------------------------------------------------------- */
 .brand-story-section {

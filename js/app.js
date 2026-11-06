@@ -167,6 +167,7 @@
     setupCheckoutModal();
     setupScrollReveals();
     setupHeroBanner();
+    setupLuxury360();
   }
 
   /* --------------------------------------------------------------------------
@@ -1072,15 +1073,168 @@
     });
   }
 
-  // Lookbook Hotspots direct action
-  document.querySelectorAll('.lookbook-pin').forEach(pin => {
-    pin.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const id = pin.dataset.id;
-      const product = CATALOG.find(p => p.id === id);
-      if (product) openQuickView(product);
+  /* --------------------------------------------------------------------------
+     18. PARVAII LUXURY 360 INTERACTIVE VIEWER
+     -------------------------------------------------------------------------- */
+  function setupLuxury360() {
+    const section = document.getElementById('luxury-360');
+    if (!section) return;
+
+    const turner = section.querySelector('#turner');
+    const product = section.querySelector('#product');
+    const rotateBtn = section.querySelector('#rotateBtn');
+    const zoomBtn = section.querySelector('#zoomBtn');
+    const resetBtn = section.querySelector('#resetBtn');
+    const thumbs = Array.from(section.querySelectorAll('.thumb'));
+    const overlay = document.getElementById('detailOverlay');
+    const detailImage = document.getElementById('detailImage');
+    const closeDetail = document.getElementById('closeDetail');
+
+    if (!turner || !product) return;
+
+    let angle = 0, scale = 1, auto = false, drag = false, startX = 0, startAngle = 0, raf = 0, last = 0;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function render(immediate = false) {
+      turner.style.transition = immediate ? 'none' : '';
+      turner.style.transform = `rotateY(${angle}deg) scale(${scale})`;
+      const normAngle = ((angle % 360) + 360) % 360;
+      const side = normAngle >= 90 && normAngle < 270 ? 'back' : 'front';
+      thumbs.forEach(t => {
+        if (t.dataset.view === 'front' || t.dataset.view === 'back') {
+          t.classList.toggle('active', t.dataset.view === side);
+        }
+      });
+    }
+
+    function stopAuto() {
+      auto = false;
+      if (rotateBtn) rotateBtn.setAttribute('aria-pressed', 'false');
+      cancelAnimationFrame(raf);
+    }
+
+    function tick(time) {
+      if (!auto) return;
+      if (last) angle += (time - last) * 0.012;
+      last = time;
+      render(true);
+      raf = requestAnimationFrame(tick);
+    }
+
+    if (rotateBtn) {
+      rotateBtn.addEventListener('click', () => {
+        if (reduced) {
+          angle += 180;
+          render();
+          return;
+        }
+        auto = !auto;
+        rotateBtn.setAttribute('aria-pressed', String(auto));
+        if (auto) {
+          last = 0;
+          raf = requestAnimationFrame(tick);
+        } else {
+          cancelAnimationFrame(raf);
+        }
+      });
+    }
+
+    if (zoomBtn) {
+      zoomBtn.addEventListener('click', () => {
+        scale = scale === 1 ? 1.35 : 1;
+        zoomBtn.setAttribute('aria-pressed', String(scale > 1));
+        render();
+      });
+    }
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        stopAuto();
+        angle = 0;
+        scale = 1;
+        if (zoomBtn) zoomBtn.setAttribute('aria-pressed', 'false');
+        render();
+      });
+    }
+
+    product.addEventListener('pointerdown', e => {
+      if (e.button !== 0) return;
+      stopAuto();
+      drag = true;
+      startX = e.clientX;
+      startAngle = angle;
+      product.setPointerCapture(e.pointerId);
+      turner.style.transition = 'none';
     });
-  });
+
+    product.addEventListener('pointermove', e => {
+      if (!drag) return;
+      angle = startAngle + (e.clientX - startX) * 0.65;
+      render(true);
+    });
+
+    function finish() {
+      drag = false;
+      turner.style.transition = '';
+    }
+
+    product.addEventListener('pointerup', finish);
+    product.addEventListener('pointercancel', finish);
+
+    product.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+        e.preventDefault();
+        stopAuto();
+        angle += (e.key === 'ArrowRight' ? 30 : -30);
+        render();
+      }
+    });
+
+    product.addEventListener('wheel', e => {
+      if (document.activeElement === product || e.ctrlKey || e.metaKey) {
+        e.preventDefault();
+        scale = Math.min(1.7, Math.max(0.75, scale + (e.deltaY < 0 ? 0.1 : -0.1)));
+        if (zoomBtn) zoomBtn.setAttribute('aria-pressed', String(scale > 1));
+        render();
+      }
+    }, { passive: false });
+
+    // Thumbnails
+    thumbs.forEach(t => {
+      t.addEventListener('click', () => {
+        if (t.dataset.view === 'detail') {
+          if (overlay && detailImage) {
+            detailImage.src = t.dataset.image;
+            overlay.hidden = false;
+          }
+          return;
+        }
+        stopAuto();
+        angle = t.dataset.view === 'back' ? 180 : 0;
+        render();
+      });
+    });
+
+    if (closeDetail && overlay) {
+      closeDetail.addEventListener('click', () => {
+        overlay.hidden = true;
+      });
+    }
+
+    if (overlay) {
+      overlay.addEventListener('click', e => {
+        if (e.target === overlay) overlay.hidden = true;
+      });
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && overlay && !overlay.hidden) {
+        overlay.hidden = true;
+      }
+    });
+
+    render();
+  }
 
   // Run when DOM is ready
   if (document.readyState === 'loading') {
