@@ -19,7 +19,7 @@
     rel="stylesheet">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="css/styles.css?v=20261106-luxury-360">
+  <link rel="stylesheet" href="css/styles.css?v=20261106-luxury-360-v2">
 </head>
 
 <body>
@@ -416,19 +416,33 @@ UPCOMING PRODUCTS (NEXT LOOM PREVIEW)
         <div class="leaf leaf-two" aria-hidden="true"></div>
         <div class="sunbeam" aria-hidden="true"></div>
 
-        <section class="copy">
-          <div class="brand">PARVAII <small>COLLECTION</small></div>
-          <p class="eyebrow">THE EVERYDAY EDIT / 01</p>
-          <h2 class="viewer-title">The Sunlit<br>Floral Top</h2>
-          <div class="gold-line" aria-hidden="true"></div>
-          <p class="desc">A breezy everyday staple<br>with timeless charm.</p>
-          <div class="actions">
-            <button type="button" id="rotateBtn" aria-label="Toggle automatic rotation"><span>⟳</span>360° View</button>
-            <button type="button" id="zoomBtn" aria-label="Zoom garment"><span>⌕</span>Zoom</button>
-            <button type="button" id="resetBtn" aria-label="Reset view"><span>↺</span>Reset</button>
+        <div class="luxury-360-copy">
+          <div class="luxury-360-meta">
+            <span class="luxury-360-tag">THE EVERYDAY EDIT // 01</span>
+            <span class="luxury-360-brand-label">PARVAII MAISON</span>
           </div>
-          <p class="hint">Drag to rotate · Tap a thumbnail to explore</p>
-        </section>
+          <h2 class="luxury-360-title">The Sunlit<br>Floral Top</h2>
+          <div class="luxury-360-divider" aria-hidden="true"></div>
+          <p class="luxury-360-desc">A breezy everyday staple crafted with pure handloom cotton, floral block motifs, and adjustable side tie drapes.</p>
+          <div class="luxury-360-actions">
+            <button type="button" id="rotateBtn" aria-label="Toggle automatic rotation">
+              <span class="action-icon">⟳</span>
+              <span class="action-label">360° View</span>
+            </button>
+            <button type="button" id="zoomBtn" aria-label="Zoom garment">
+              <span class="action-icon">⌕</span>
+              <span class="action-label">Zoom</span>
+            </button>
+            <button type="button" id="resetBtn" aria-label="Reset view">
+              <span class="action-icon">↺</span>
+              <span class="action-label">Reset</span>
+            </button>
+          </div>
+          <div class="luxury-360-hint">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 16l-4-4m0 0l4-4m-4 4h18"/><path d="M17 8l4 4m0 0l-4 4"/></svg>
+            <span>Drag to rotate · Tap thumbnails to explore</span>
+          </div>
+        </div>
 
         <section class="stage" aria-label="Interactive product viewer">
           <div class="halo" aria-hidden="true"></div>
@@ -781,7 +795,7 @@ UPCOMING PRODUCTS (NEXT LOOM PREVIEW)
   <div class="toast-container" id="toastContainer" aria-live="polite"></div>
 
   <!-- Application Script -->
-  <script src="js/app.js?v=20261106-luxury-360"></script>
+  <script src="js/app.js?v=20261106-luxury-360-v2"></script>
 </body>
 
 </html>
