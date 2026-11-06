@@ -4,11 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PARVAII — Haute Couture Kurtis & Artisanal Indian Weaves</title>
+  <title>PARVAII — Thoughtfully chosen, just for you</title>
   <meta name="description"
-    content="Discover Parvaii, an artisanal maison creating luxury female kurtis, handloom Chanderi silks, and bespoke royal Indian silhouettes in timeless midnight navy and champagne sand hues.">
+    content="Discover PARVAII: thoughtfully chosen styles that bring together comfort, beauty, and effortless confidence for everyday moments.">
   <meta name="keywords"
-    content="Parvaii, luxury kurti, designer kurti, female ethnic wear, Chanderi silk kurti, anarkali suit, angrakha kurti, zardozi embroidery, Indian luxury fashion">
+    content="Parvaii, female clothing, everyday elegance, boutique tops, Trivandrum fashion, floral tops, comfortable styles">
   <meta name="theme-color" content="#0B162A">
 
   <!-- Google Fonts Preconnect & Stylesheets -->
@@ -19,7 +19,7 @@
     rel="stylesheet">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="css/styles.css?v=20261106-luxury-360-v2">
+  <link rel="stylesheet" href="css/styles.css?v=20261106-parvaii-complete">
 </head>
 
 <body>
@@ -32,8 +32,8 @@
        ======================================================================== -->
   <aside class="announcement" aria-label="Special Announcements">
     <div class="marquee" aria-label="Collection announcements">
-      <span>THE DUSK &amp; MIDNIGHT SILK 2026 COLLECTION HAS ARRIVED &nbsp; • &nbsp; USE CODE PARVAII10 FOR 10% OFF YOUR INAUGURAL ATELIER ORDER &nbsp; • &nbsp; EACH SILHOUETTE HANDCRAFTED BY MASTER WEAVERS IN LIMITED QUANTITIES &nbsp; •</span>
-      <span aria-hidden="true">THE DUSK &amp; MIDNIGHT SILK 2026 COLLECTION HAS ARRIVED &nbsp; • &nbsp; USE CODE PARVAII10 FOR 10% OFF YOUR INAUGURAL ATELIER ORDER &nbsp; • &nbsp; EACH SILHOUETTE HANDCRAFTED BY MASTER WEAVERS IN LIMITED QUANTITIES &nbsp; •</span>
+      <span>A LITTLE SOMETHING SPECIAL IS WAITING FOR YOU &nbsp;✦&nbsp; DISCOVER OUR LATEST COLLECTION &nbsp;✦&nbsp; NEW STYLES, NEW STORIES, SAME LOVE &nbsp;✦&nbsp;</span>
+      <span aria-hidden="true">A LITTLE SOMETHING SPECIAL IS WAITING FOR YOU &nbsp;✦&nbsp; DISCOVER OUR LATEST COLLECTION &nbsp;✦&nbsp; NEW STYLES, NEW STORIES, SAME LOVE &nbsp;✦&nbsp;</span>
     </div>
   </aside>
 
@@ -41,7 +41,7 @@
   <div class="menu-overlay drawer-backdrop" id="menuOverlay" hidden></div>
   <aside class="menu-drawer drawer" id="menuDrawer" aria-hidden="true">
     <div class="menu-drawer-head drawer-head">
-      <span class="menu-drawer-title">PARVAII Navigation</span>
+      <span class="menu-drawer-title">PARVAII</span>
       <button class="icon-btn menu-close-btn" id="menuCloseBtn" aria-label="Close menu">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
           <line x1="18" y1="6" x2="6" y2="18"></line>
@@ -51,11 +51,11 @@
     </div>
     <nav class="menu-drawer-nav" aria-label="Primary Navigation">
       <a href="#hero" class="menu-link">Home</a>
-      <a href="#collections" class="menu-link">Collections</a>
-      <a href="#upcoming" class="menu-link">Upcoming Drops <span class="nav-badge">Preview</span></a>
-      <a href="#weave" class="menu-link">Weave Heritage</a>
-      <a href="#luxury-360" class="menu-link">360° Studio <span class="nav-badge">Interactive</span></a>
+      <a href="#collections" class="menu-link">Shop All</a>
+      <a href="#collections" class="menu-link">New Arrivals</a>
+      <a href="#upcoming" class="menu-link">Coming Soon</a>
       <a href="#story" class="menu-link">Our Story</a>
+      <a href="#contact" class="menu-link">Contact</a>
     </nav>
   </aside>
 
@@ -79,6 +79,16 @@
           <img src="assets/Logo_png.png" alt="Parvaii">
         </a>
 
+        <!-- Desktop Navigation Bar -->
+        <nav class="nav-center-links" aria-label="Desktop Navigation">
+          <a href="#hero" class="active">Home</a>
+          <a href="#collections">Shop All</a>
+          <a href="#collections">New Arrivals</a>
+          <a href="#upcoming">Coming Soon</a>
+          <a href="#story">Our Story</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
         <div class="nav-actions header-actions">
           <button class="icon-btn search-open-btn" id="searchButton" aria-label="Search Collections">
             <svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg>
@@ -86,12 +96,12 @@
 
           <button class="icon-btn" id="headerWishlistBtn" aria-label="View Wishlist">
             <svg viewBox="0 0 24 24"><path d="M20.8 8.6c0 4.1-8.8 10.1-8.8 10.1S3.2 12.7 3.2 8.6a4.7 4.7 0 0 1 8.8-2.2 4.7 4.7 0 0 1 8.8 2.2Z"/></svg>
-            <span class="badge-count" id="wishlistCount">1</span>
+            <span class="badge-count" id="wishlistCount">0</span>
           </button>
 
-          <button class="icon-btn cart-open-btn" id="cartButton" aria-label="View Shopping Bag">
+          <button class="icon-btn cart-open-btn" id="cartButton" aria-label="Shopping Bag (0)" title="Shopping Bag">
             <svg viewBox="0 0 24 24"><path d="M5 8h14l-1 13H6L5 8ZM9 9V6a3 3 0 0 1 6 0v3"/></svg>
-            <span class="badge-count" id="cartBadgeCount">2</span>
+            <span class="badge-count" id="cartBadgeCount">0</span>
           </button>
         </div>
       </header>
@@ -100,15 +110,16 @@
       <div class="hero-content copy">
         <div class="eyebrow">
           <span class="eyebrow-line"></span>
-          <span>HAUTE COUTURE 2026 EDITION</span>
+          <span>THE PARVAII EDIT · 2026</span>
         </div>
         
-        <h1 class="hero-title">The Poetry of<br><em>Silhouette &amp;</em><br>Pure Weave.</h1>
-        <p class="hero-desc">Rooted in Indian handloom heritage. Reimagined in midnight navy and champagne sand silks.</p>
+        <h1 class="hero-title">A Little Elegance,<br><em>Every Day.</em></h1>
+        <p class="hero-subtitle" style="font-family: var(--font-display); font-size: 1.35rem; color: var(--c-gold); margin: 0 0 0.85rem; font-style: italic; font-weight: 400;">For the moments that feel like you.</p>
+        <p class="hero-desc">Discover thoughtfully selected styles that bring together comfort, beauty, and effortless confidence. From everyday favourites to pieces made for special moments, there's a little something for every version of you.</p>
         
         <div class="cta hero-action-row">
-          <a href="#collections" class="btn-primary primary hero-main-btn" aria-label="Explore the collection">
-            <span>Explore the Collection</span>
+          <a href="#collections" class="btn-primary primary hero-main-btn" aria-label="Explore Collection">
+            <span>Explore Collection</span>
             <span class="btn-arrow cta-arrow">→</span>
           </a>
           <a href="#story" class="story">
@@ -117,48 +128,39 @@
                 <polygon points="6 3 20 12 6 21 6 3"></polygon>
               </svg>
             </span>
-            <span>Our Story</span>
+            <span>Discover Our Story</span>
           </a>
         </div>
       </div>
 
       <!-- Right Features Column (Icon + Title Stack) -->
-      <aside class="features banner-features" aria-label="Atelier features">
+      <aside class="features banner-features" aria-label="Parvaii highlights">
         <div class="feature-item">
           <div class="feature-icon" aria-hidden="true">
-            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
-              <line x1="4" y1="8" x2="20" y2="8"></line>
-              <line x1="4" y1="16" x2="20" y2="16"></line>
-              <line x1="8" y1="4" x2="8" y2="20"></line>
-              <line x1="16" y1="4" x2="16" y2="20"></line>
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
             </svg>
           </div>
-          <div class="feature-text">Handloom<br>Inspired</div>
+          <div class="feature-text">Thoughtfully<br>Selected</div>
         </div>
         
         <div class="feature-item">
           <div class="feature-icon" aria-hidden="true">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M11 20A7 7 0 0 1 4 13C4 7 11 3 11 3s7 4 7 10a7 7 0 0 1-7 7Z"></path>
-              <path d="M11 20V10"></path>
-              <path d="M11 14l4-3"></path>
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
             </svg>
           </div>
-          <div class="feature-text">Sustainable<br>Choice</div>
+          <div class="feature-text">Made for<br>Everyday Moments</div>
         </div>
         
         <div class="feature-item">
           <div class="feature-icon" aria-hidden="true">
-            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M6 3h12l4 6-10 12L2 9l4-6z"></path>
-              <line x1="2" y1="9" x2="22" y2="9"></line>
-              <line x1="12" y1="21" x2="7" y2="9"></line>
-              <line x1="12" y1="21" x2="17" y2="9"></line>
-              <line x1="6" y1="3" x2="10" y2="9"></line>
-              <line x1="18" y1="3" x2="14" y2="9"></line>
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.8 8.6c0 4.1-8.8 10.1-8.8 10.1S3.2 12.7 3.2 8.6a4.7 4.7 0 0 1 8.8-2.2 4.7 4.7 0 0 1 8.8 2.2Z"></path>
             </svg>
           </div>
-          <div class="feature-text">Limited<br>Edition</div>
+          <div class="feature-text">Styles<br>You'll Love</div>
         </div>
       </aside>
 
@@ -211,10 +213,9 @@
     <section class="section-pad collections-section" id="collections">
       <div class="container">
         <div class="section-header reveal-on-scroll">
-          <span class="section-eyebrow">Curated Lookbook</span>
-          <h2 class="section-title">Silhouettes of Distinction</h2>
-          <p class="section-desc">Explore our signature hand-embroidered, Anarkali, Angrakha, and contemporary
-            straight-cut kurti ensembles.</p>
+          <span class="section-eyebrow">CURATED WITH LOVE</span>
+          <h2 class="section-title">Pieces Worth Falling For</h2>
+          <p class="section-desc">A collection of beautiful, comfortable styles chosen to make everyday dressing feel a little more special.</p>
         </div>
 
         <!-- Product Grid (Hydrated by JS) -->
@@ -225,36 +226,52 @@
     </section>
 
     <!-- ========================================================================
-UPCOMING PRODUCTS (NEXT LOOM PREVIEW)
+         03. UPCOMING DROPS (THE NEXT CHAPTER OF PARVAII)
          ======================================================================== -->
     <section class="section-pad upcoming-section" id="upcoming">
       <div class="container">
         <div class="section-header reveal-on-scroll">
-          <span class="section-eyebrow" style="color: var(--c-sand);">Private Preview • Next Loom Edition</span>
-          <h2 class="section-title">Upcoming Silhouettes</h2>
-          <p class="section-desc">A glimpse into our forthcoming limited-batch handcrafted weaves. Join the priority
-            waitlist for exclusive early access before the public release.</p>
+          <span class="section-eyebrow" style="color: var(--c-sand);">SOMETHING BEAUTIFUL IS COMING</span>
+          <h2 class="section-title">The Next Chapter of PARVAII</h2>
+          <p class="section-desc">New colours. New silhouettes. New little reasons to fall in love. We're always searching for pieces that make you feel comfortable, confident, and beautifully yourself.</p>
+        </div>
+
+        <!-- Highlight Hero Card for Upcoming Drops -->
+        <div class="upcoming-spotlight-card reveal-on-scroll">
+          <div class="spotlight-content">
+            <span class="spotlight-badge">Coming Soon</span>
+            <h3 class="spotlight-title">Our Next Collection is Taking Shape.</h3>
+            <p class="spotlight-desc">Follow along for first looks, behind-the-scenes moments, and the excitement before every new drop.</p>
+            <div class="spotlight-action-row">
+              <a href="#contact" class="btn-primary primary">
+                <span>Follow Our Journey</span>
+                <span class="btn-arrow">→</span>
+              </a>
+              <a href="https://wa.me/916238962054?text=Hi%20Parvaii!%20I'd%20love%20to%20get%20updates%20on%20upcoming%20drops" target="_blank" rel="noopener noreferrer" class="btn-whatsapp-outline">
+                <span>WhatsApp Early Access</span>
+              </a>
+            </div>
+          </div>
         </div>
 
         <div class="upcoming-grid">
           <!-- Upcoming Item 1 -->
           <article class="upcoming-card reveal-on-scroll">
             <div class="upcoming-media-wrap">
-              <span class="upcoming-badge">Dropping Nov 2026</span>
-              <img src="assets/images/upcoming-velvet.jpg" alt="The Noorani Velvet Kurti" class="upcoming-img">
-              <span class="upcoming-edition-tag">Limited 50 Pcs</span>
+              <span class="upcoming-badge">Dropping Soon</span>
+              <img src="assets/images/upcoming-velvet.jpg" alt="Velvet Bell Sleeve Edition" class="upcoming-img">
+              <span class="upcoming-edition-tag">New Silhouette</span>
             </div>
             <div class="upcoming-info">
               <div class="upcoming-meta">
-                <span>Festive Velvet</span>
-                <span class="waitlist-count">✦ 142 Waiting</span>
+                <span>Midnight Navy</span>
+                <span class="waitlist-count">✦ In Development</span>
               </div>
-              <h3 class="upcoming-title">The Noorani Velvet</h3>
-              <p class="upcoming-desc">Midnight navy (#0B162A) silk-velvet with champagne sand bell cuffs and zardozi
-                yoke.</p>
+              <h3 class="upcoming-title">The Midnight Bell Sleeve</h3>
+              <p class="upcoming-desc">A deep, fluid drape with subtle floral embroidery, tailored for effortless evenings.</p>
               <div class="upcoming-action-row">
-                <span class="upcoming-price-est">Est. $340</span>
-                <button class="upcoming-notify-btn" data-product="The Noorani Velvet Kurti">
+                <span class="upcoming-price-est">Coming Soon</span>
+                <button class="upcoming-notify-btn" data-product="The Midnight Bell Sleeve">
                   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2">
                     <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
@@ -269,21 +286,20 @@ UPCOMING PRODUCTS (NEXT LOOM PREVIEW)
           <!-- Upcoming Item 2 -->
           <article class="upcoming-card reveal-on-scroll delay-100">
             <div class="upcoming-media-wrap">
-              <span class="upcoming-badge">Dropping Dec 2026</span>
-              <img src="assets/images/upcoming-chikankari.jpg" alt="The Roohani Scallop Ensemble" class="upcoming-img">
-              <span class="upcoming-edition-tag">Varanasi Looms</span>
+              <span class="upcoming-badge">Dropping Soon</span>
+              <img src="assets/images/upcoming-chikankari.jpg" alt="The Sand Handloom Tunic" class="upcoming-img">
+              <span class="upcoming-edition-tag">Pure Cotton</span>
             </div>
             <div class="upcoming-info">
               <div class="upcoming-meta">
-                <span>Organza & Silk</span>
-                <span class="waitlist-count">✦ 198 Waiting</span>
+                <span>Champagne Sand</span>
+                <span class="waitlist-count">✦ In Development</span>
               </div>
-              <h3 class="upcoming-title">The Roohani Scallop</h3>
-              <p class="upcoming-desc">Raw champagne sand silk (#C9B7A5) with delicate midnight scalloped threadwork.
-              </p>
+              <h3 class="upcoming-title">The Sand Blossom Top</h3>
+              <p class="upcoming-desc">Earthy neutral tones with delicate floral patterns for light, airy all-day comfort.</p>
               <div class="upcoming-action-row">
-                <span class="upcoming-price-est">Est. $290</span>
-                <button class="upcoming-notify-btn" data-product="The Roohani Scallop Set">
+                <span class="upcoming-price-est">Coming Soon</span>
+                <button class="upcoming-notify-btn" data-product="The Sand Blossom Top">
                   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2">
                     <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
@@ -298,49 +314,20 @@ UPCOMING PRODUCTS (NEXT LOOM PREVIEW)
           <!-- Upcoming Item 3 -->
           <article class="upcoming-card reveal-on-scroll delay-200">
             <div class="upcoming-media-wrap">
-              <span class="upcoming-badge">Dropping Jan 2027</span>
-              <img src="assets/images/upcoming-brocade.jpg" alt="The Sitara Brocade Kurti" class="upcoming-img">
-              <span class="upcoming-edition-tag">Benares Zari</span>
+              <span class="upcoming-badge">Next Season</span>
+              <img src="assets/images/upcoming-brocade.jpg" alt="The Festive Drop" class="upcoming-img">
+              <span class="upcoming-edition-tag">Festive Edit</span>
             </div>
             <div class="upcoming-info">
               <div class="upcoming-meta">
-                <span>Heritage Brocade</span>
-                <span class="waitlist-count">✦ 115 Waiting</span>
+                <span>Special Moments</span>
+                <span class="waitlist-count">✦ In Development</span>
               </div>
-              <h3 class="upcoming-title">The Sitara Brocade</h3>
-              <p class="upcoming-desc">Midnight navy and champagne sand woven brocade with intricate geometric zari.</p>
+              <h3 class="upcoming-title">The Festive Floral Edition</h3>
+              <p class="upcoming-desc">Thoughtfully designed for celebrations, bringing subtle grace and timeless ease.</p>
               <div class="upcoming-action-row">
-                <span class="upcoming-price-est">Est. $380</span>
-                <button class="upcoming-notify-btn" data-product="The Sitara Brocade Kurti">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2">
-                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
-                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-                  </svg>
-                  <span>Notify Me</span>
-                </button>
-              </div>
-            </div>
-          </article>
-
-          <!-- Upcoming Item 4 -->
-          <article class="upcoming-card reveal-on-scroll delay-300">
-            <div class="upcoming-media-wrap">
-              <span class="upcoming-badge">Winter Drop</span>
-              <img src="assets/images/kurti-contemporary.jpg" alt="The Asymmetric Slit Tunic" class="upcoming-img">
-              <span class="upcoming-edition-tag">Signature Cut</span>
-            </div>
-            <div class="upcoming-info">
-              <div class="upcoming-meta">
-                <span>Contemporary Cut</span>
-                <span class="waitlist-count">✦ 86 Waiting</span>
-              </div>
-              <h3 class="upcoming-title">The Asymmetric Slit</h3>
-              <p class="upcoming-desc">High-slit straight silhouette with champagne sand piping, tailored for modern
-                gala evenings.</p>
-              <div class="upcoming-action-row">
-                <span class="upcoming-price-est">Est. $295</span>
-                <button class="upcoming-notify-btn" data-product="The Asymmetric Slit Tunic">
+                <span class="upcoming-price-est">Coming Soon</span>
+                <button class="upcoming-notify-btn" data-product="The Festive Floral Edition">
                   <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2">
                     <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
@@ -362,8 +349,17 @@ UPCOMING PRODUCTS (NEXT LOOM PREVIEW)
       <div class="atelier-quote-band">
         <div class="atelier-quote-inner">
           <span class="atelier-ornament">✦</span>
-          <p class="atelier-quote">"A kurti is not merely attire — it is an architectural dialogue between the artisan's hand and the wearer's grace."</p>
+          <p class="atelier-quote">"We believe fashion doesn't have to be complicated to feel beautiful. Style that feels like you."</p>
           <span class="atelier-ornament">✦</span>
+        </div>
+      </div>
+
+      <!-- Section Header -->
+      <div class="container" style="margin-bottom: 2.5rem; text-align: center;">
+        <div class="section-header reveal-on-scroll">
+          <span class="section-eyebrow">THE LITTLE THINGS MATTER</span>
+          <h2 class="section-title">Style That Feels Like You.</h2>
+          <p class="section-desc" style="max-width: 680px; margin: 0 auto;">We believe fashion doesn't have to be complicated to feel beautiful. Sometimes, it's the colour you instantly fall for, the fit that makes you smile, or the outfit you find yourself reaching for again and again. That's what we look for at PARVAII.</p>
         </div>
       </div>
 
@@ -373,33 +369,33 @@ UPCOMING PRODUCTS (NEXT LOOM PREVIEW)
 
           <div class="atelier-pillar">
             <div class="atelier-pillar-icon" aria-hidden="true">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/><line x1="8" y1="4" x2="8" y2="20"/><line x1="16" y1="4" x2="16" y2="20"/></svg>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 8.6c0 4.1-8.8 10.1-8.8 10.1S3.2 12.7 3.2 8.6a4.7 4.7 0 0 1 8.8-2.2 4.7 4.7 0 0 1 8.8 2.2Z"/></svg>
             </div>
-            <h3 class="atelier-pillar-title">Handloom Woven</h3>
-            <p class="atelier-pillar-desc">Every silhouette is woven on traditional handlooms by multigenerational artisans. No shortcuts. No machines.</p>
-            <a href="#collections" class="atelier-pillar-link">View Collection →</a>
+            <h3 class="atelier-pillar-title">Comfort Comes First</h3>
+            <p class="atelier-pillar-desc">Pieces you'll love wearing, not just looking at. Breathable textures and effortless everyday silhouettes.</p>
+            <a href="#collections" class="atelier-pillar-link">Explore Styles →</a>
           </div>
 
           <div class="atelier-pillar-sep"></div>
 
           <div class="atelier-pillar">
             <div class="atelier-pillar-icon" aria-hidden="true">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 4 13C4 7 11 3 11 3s7 4 7 10a7 7 0 0 1-7 7Z"/><path d="M11 20V10"/><path d="M11 14l4-3"/></svg>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
             </div>
-            <h3 class="atelier-pillar-title">Pure Natural Fabric</h3>
-            <p class="atelier-pillar-desc">Only 100% natural fibres — breathable Chanderi silk, Mulmul cotton, raw silk — dyed with organic mineral pigments.</p>
-            <a href="#collections" class="atelier-pillar-link">Explore Fabrics →</a>
+            <h3 class="atelier-pillar-title">Thoughtfully Chosen</h3>
+            <p class="atelier-pillar-desc">Every addition to our collection is selected with care, patience, and love for enduring charm.</p>
+            <a href="#collections" class="atelier-pillar-link">Discover Collection →</a>
           </div>
 
           <div class="atelier-pillar-sep"></div>
 
           <div class="atelier-pillar">
             <div class="atelier-pillar-icon" aria-hidden="true">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 8.6c0 4.1-8.8 10.1-8.8 10.1S3.2 12.7 3.2 8.6a4.7 4.7 0 0 1 8.8-2.2 4.7 4.7 0 0 1 8.8 2.2Z"/></svg>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
             </div>
-            <h3 class="atelier-pillar-title">Limited &amp; Intentional</h3>
-            <p class="atelier-pillar-desc">Small-batch drops, never mass-produced. Each piece comes with a serialised weaver tag and silk mark certificate.</p>
-            <a href="#upcoming" class="atelier-pillar-link">See New Drops →</a>
+            <h3 class="atelier-pillar-title">Everyday Elegance</h3>
+            <p class="atelier-pillar-desc">Beautiful styles for ordinary days and unforgettable moments. Simple, graceful, and made to last.</p>
+            <a href="#upcoming" class="atelier-pillar-link">See What's Coming →</a>
           </div>
 
         </div>
@@ -408,9 +404,9 @@ UPCOMING PRODUCTS (NEXT LOOM PREVIEW)
     </section>
 
     <!-- ========================================================================
-         PARVAII LUXURY 360 VIEWER — INTERACTIVE SILHOUETTE
+         PARVAII INTERACTIVE PRODUCT STUDIO (360° VIEWER)
          ======================================================================== -->
-    <section class="luxury-360-section" id="luxury-360" aria-label="Interactive 360 Garment Viewer">
+    <section class="luxury-360-section" id="luxury-360" aria-label="Interactive Product Studio">
       <div class="scene">
         <div class="leaf leaf-one" aria-hidden="true"></div>
         <div class="leaf leaf-two" aria-hidden="true"></div>
@@ -418,12 +414,21 @@ UPCOMING PRODUCTS (NEXT LOOM PREVIEW)
 
         <div class="luxury-360-copy">
           <div class="luxury-360-meta">
-            <span class="luxury-360-tag">THE EVERYDAY EDIT // 01</span>
-            <span class="luxury-360-brand-label">PARVAII MAISON</span>
+            <span class="luxury-360-tag">A CLOSER LOOK</span>
+            <span class="luxury-360-brand-label">PRODUCT STUDIO</span>
           </div>
-          <h2 class="luxury-360-title">The Sunlit<br>Floral Top</h2>
+          <h2 class="luxury-360-title">Every Detail,<br>Every Angle.</h2>
           <div class="luxury-360-divider" aria-hidden="true"></div>
-          <p class="luxury-360-desc">A breezy everyday staple crafted with pure handloom cotton, floral block motifs, and adjustable side tie drapes.</p>
+          <p class="luxury-360-desc">Because the little details deserve attention. Explore our collection up close, from delicate patterns and colours to the shape and fit of each piece.</p>
+
+          <div class="studio-features-list" aria-label="Product Viewer Features">
+            <span class="studio-feature-pill">✦ Front View</span>
+            <span class="studio-feature-pill">✦ Back View</span>
+            <span class="studio-feature-pill">✦ Fabric Details</span>
+            <span class="studio-feature-pill">✦ Zoom to Explore</span>
+            <span class="studio-feature-pill">✦ 360° Product View (where available)</span>
+          </div>
+
           <div class="luxury-360-actions">
             <button type="button" id="rotateBtn" aria-label="Toggle automatic rotation">
               <span class="action-icon">⟳</span>
@@ -440,7 +445,13 @@ UPCOMING PRODUCTS (NEXT LOOM PREVIEW)
           </div>
           <div class="luxury-360-hint">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 16l-4-4m0 0l4-4m-4 4h18"/><path d="M17 8l4 4m0 0l-4 4"/></svg>
-            <span>Drag to rotate · Tap thumbnails to explore</span>
+            <span>Take a closer look before you fall in love.</span>
+          </div>
+          <div class="studio-cta-wrap" style="margin-top: 1.25rem;">
+            <a href="#collections" class="btn-primary primary studio-explore-btn">
+              <span>Explore the Details</span>
+              <span class="btn-arrow">→</span>
+            </a>
           </div>
         </div>
 
@@ -449,24 +460,24 @@ UPCOMING PRODUCTS (NEXT LOOM PREVIEW)
           <div class="orbit" aria-hidden="true"><span class="orbit-left">➤</span><span class="orbit-right">➤</span></div>
           <div class="product" id="product" role="img" aria-label="Yellow floral PARVAII top, rotating front and back" tabindex="0">
             <div class="turner" id="turner">
-              <img class="face front" src="assets/luxury_360/front.png" alt="Yellow floral top front">
-              <img class="face back" src="assets/luxury_360/back.png" alt="Yellow floral top back">
+              <img class="face front" src="assets/luxury_360/front.png" alt="Yellow floral top front view">
+              <img class="face back" src="assets/luxury_360/back.png" alt="Yellow floral top back view">
             </div>
           </div>
           <div class="shadow" aria-hidden="true"></div>
           <div class="pedestal" aria-hidden="true"></div>
-          <div class="view-tag" aria-hidden="true">360°<small>VIEW</small></div>
+          <div class="view-tag" aria-hidden="true">360°<small>STUDIO</small></div>
         </section>
 
         <aside class="thumbs" aria-label="Product views">
-          <button type="button" class="thumb active" data-view="front" aria-label="Front view"><img src="assets/luxury_360/front.png" alt="Front"></button>
-          <button type="button" class="thumb" data-view="back" aria-label="Back view"><img src="assets/luxury_360/back.png" alt="Back"></button>
-          <button type="button" class="thumb" data-view="detail" data-image="assets/luxury_360/detail-side.png" aria-label="Side detail"><img src="assets/luxury_360/detail-side.png" alt="Side tie detail"></button>
-          <button type="button" class="thumb" data-view="detail" data-image="assets/luxury_360/detail-fabric.png" aria-label="Fabric detail"><img src="assets/luxury_360/detail-fabric.png" alt="Floral fabric detail"></button>
+          <button type="button" class="thumb active" data-view="front" aria-label="Front view" title="Front View"><img src="assets/luxury_360/front.png" alt="Front View"></button>
+          <button type="button" class="thumb" data-view="back" aria-label="Back view" title="Back View"><img src="assets/luxury_360/back.png" alt="Back View"></button>
+          <button type="button" class="thumb" data-view="detail" data-image="assets/luxury_360/detail-side.png" aria-label="Side detail" title="Side Details"><img src="assets/luxury_360/detail-side.png" alt="Side tie detail"></button>
+          <button type="button" class="thumb" data-view="detail" data-image="assets/luxury_360/detail-fabric.png" aria-label="Fabric detail" title="Fabric Details"><img src="assets/luxury_360/detail-fabric.png" alt="Floral fabric detail"></button>
         </aside>
 
         <div class="flowers" aria-hidden="true">✿<span>✿</span><i>✿</i></div>
-        <div class="footer-label">PARVAII · MADE TO BE LOVED</div>
+        <div class="footer-label">PARVAII · THOUGHTFULLY CHOSEN</div>
       </div>
     </section>
 
@@ -477,7 +488,7 @@ UPCOMING PRODUCTS (NEXT LOOM PREVIEW)
     </div>
 
     <!-- ========================================================================
-         THE STORY BEHIND PARVAII (FOUNDER'S JOURNAL)
+         08. BRAND STORY (THE HEART OF PARVAII)
          ======================================================================== -->
     <section class="section-pad brand-story-section" id="story">
       <div class="container">
@@ -486,71 +497,60 @@ UPCOMING PRODUCTS (NEXT LOOM PREVIEW)
           <!-- Visual Column -->
           <div class="story-visual-wrap">
             <div class="story-image-frame">
-              <img src="assets/images/hero.jpg" alt="The Spirit of Parvaii Artisanal Couture"
-                class="story-featured-img">
+              <img src="assets/images/hero.jpg" alt="PARVAII founders and handcrafted journey" class="story-featured-img">
               <div class="story-badge-seal">
-                <span class="seal-sub">Handcrafted</span>
-                <span class="seal-year">Maison</span>
+                <span class="seal-sub">Three Friends</span>
+                <span class="seal-year">One Dream</span>
               </div>
             </div>
             <div class="story-visual-caption">
-              <span>Palace Heritage Edition • Limited Looms</span>
+              <span>Born in Trivandrum · Built With Love</span>
             </div>
           </div>
 
           <!-- Narrative Content Column -->
           <div class="story-narrative-wrap">
             <div class="story-header-block">
-              <span class="section-eyebrow">Story Behind</span>
-              <h2 class="story-main-title">PARVAII?</h2>
-              <p class="story-subtitle">Every Silhouette, a Celebration of Grace & Honest Comfort.</p>
+              <span class="section-eyebrow">OUR STORY · THE HEART OF PARVAII</span>
+              <h2 class="story-main-title">Three Strangers. One Friendship. A Little Dream.</h2>
+              <p class="story-subtitle">A small clothing brand, born from friendship and a shared dream.</p>
             </div>
 
             <div class="story-body-content">
               <p class="story-lead">
-                Clothes have always been so much more than mere fabric and seams to me. Ever since I first draped an
-                unbleached handloom Chanderi kurti, I fell in love with that quiet, effortless feeling when an outfit
-                simply <em>feels right</em>.
+                Some beautiful stories begin unexpectedly. Ours began when three strangers from three different districts crossed paths in Trivandrum.
+              </p>
+
+              <p>
+                We didn't know then that a simple meeting would grow into a friendship, and that friendship would one day become something we could call our own.
               </p>
 
               <div class="story-quote-card">
                 <span class="quote-mark">“</span>
-                <p>Maybe it’s the whisper of pure mulberry silk against the skin, the way the drape falls with every
-                  step, or the effortless confidence when you look in the mirror and smile with genuine delight.</p>
+                <p>Between conversations, laughter, little struggles, and countless dreams, an idea slowly took shape: <em>What if we started something together?</em></p>
               </div>
 
               <p>
-                Through years of exploring traditional Indian looms, styling everyday ensembles, and connecting with
-                women who desire authentic luxury without stiffness, one thought kept returning: <em>What if we could
-                  create pieces that feel deeply special yet remarkably effortless to live in?</em>
+                Not something big or perfect. Just something that belonged to us. Something we could build with love, patience, and a lot of hope. And that's how <strong>PARVAII</strong> began.
               </p>
 
               <p>
-                My choices, my love for honest silhouettes, the confidence, breathability, and that unmistakable joy
-                when a kurti flatters without demanding effort.
+                Every collection we introduce is another little step in our journey. Every order brings a new moment of happiness. Every package carries a little piece of the love we've put into building this dream.
               </p>
 
               <p>
-                And that is how <strong>Parvaii</strong> was born—named after the classical word for <em>"A Perspective
-                  of Grace"</em>.
-              </p>
-
-              <p>
-                Parvaii is simply our heartfelt collection, woven slowly by master multigenerational artisans in
-                nocturnal midnight navy (<code>#0B162A</code>) and raw champagne sand (<code>#C9B7A5</code>) silks.
-                Shared with you in the hope that whenever you slip into one, you feel grounded, radiant, and completely
-                at home in your own elegance.
+                We're still learning, still growing, and still figuring things out along the way. But that's what makes this journey so special. PARVAII isn't just about clothes. It's about three friends, one dream, and all the beautiful things yet to come.
               </p>
 
               <div class="story-signature-block">
                 <div class="signature-line">
-                  <span class="signature-text">The Parvaii Atelier</span>
-                  <span class="signature-role">Founder & Creative Director</span>
+                  <span class="signature-text">With love,</span>
+                  <span class="signature-role">Team PARVAII 🤎</span>
                 </div>
                 <div class="story-values-strip">
-                  <span class="value-tag">✦ 100% Handloom Weave</span>
-                  <span class="value-tag">✦ Zero Synthetic Blends</span>
-                  <span class="value-tag">✦ Limited Artisan Batches</span>
+                  <span class="value-tag">✦ Thoughtfully Chosen</span>
+                  <span class="value-tag">✦ Made for You</span>
+                  <span class="value-tag">✦ Built on Love</span>
                 </div>
               </div>
             </div>
@@ -560,21 +560,111 @@ UPCOMING PRODUCTS (NEXT LOOM PREVIEW)
       </div>
     </section>
 
-    <!-- NEWSLETTER & VIP ATELIER INVITATION -->
-    <section class="section-pad newsletter-section">
+    <!-- ========================================================================
+         09. BEHIND THE BRAND & 10. CUSTOMER EXPERIENCE (DUAL SHOWCASE)
+         ======================================================================== -->
+    <section class="section-pad behind-brand-section" id="behind">
+      <div class="container">
+        <div class="behind-experience-grid">
+
+          <!-- 09. Behind the Brand -->
+          <div class="behind-card reveal-on-scroll">
+            <span class="section-eyebrow">BEYOND THE COLLECTION</span>
+            <h3 class="behind-title">Little Moments, Big Dreams.</h3>
+            <p class="behind-desc">
+              From choosing our next pieces to packing every order, there's a whole little world behind PARVAII. The late-night discussions. The excitement of a new arrival. The carefully folded clothes. The handwritten notes.
+            </p>
+            <p class="behind-sub">We'd love for you to be part of it.</p>
+            <div class="behind-cta">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="btn-instagram">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                <span>Follow Us on Instagram →</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- 10. Customer Experience -->
+          <div class="experience-card reveal-on-scroll delay-100">
+            <span class="section-eyebrow">PACKED WITH A LITTLE EXTRA LOVE</span>
+            <h3 class="behind-title">From Us, To You.</h3>
+            <p class="behind-desc">
+              Every order means something to us. That's why we want the experience of receiving your PARVAII piece to feel just as special as choosing it. Thoughtfully packed, carefully prepared, and sent with love.
+            </p>
+            
+            <div class="package-note-card">
+              <span class="note-seal">🕊️</span>
+              <p class="note-quote">"Thank you for letting PARVAII be a little part of your story. We hope this piece brings you a smile and many beautiful moments."</p>
+              <span class="note-author">— With love, Team PARVAII 🕊️</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         11. JOIN OUR LITTLE WORLD (THE PARVAII CIRCLE)
+         ======================================================================== -->
+    <section class="section-pad newsletter-section" id="circle">
       <div class="container">
         <div class="newsletter-box reveal-on-scroll">
-          <span class="section-eyebrow" style="color: var(--c-sand);">Private Salon</span>
-          <h2 class="section-title" style="color: var(--c-ivory);">Enter The Parvaii Cercle</h2>
-          <p class="section-desc" style="color: var(--c-sand-light);">Receive bespoke invitations to limited loom
-            editions, private seasonal drops, and master weaver interviews.</p>
+          <span class="section-eyebrow" style="color: var(--c-sand);">THE PARVAII CIRCLE</span>
+          <h2 class="section-title" style="color: var(--c-ivory);">Be the First to Know.</h2>
+          <p class="section-desc" style="color: var(--c-sand-light);">New drops, little surprises, behind-the-scenes stories, and everything happening in our little world. Stay close. There's so much more to come.</p>
 
           <form class="newsletter-form"
-            onsubmit="event.preventDefault(); alert('Welcome to the Parvaii Cercle. A private introductory invitation has been sent.');">
-            <input type="email" required placeholder="Enter your email address" class="newsletter-input"
-              aria-label="Email address for newsletter">
-            <button type="submit" class="newsletter-submit">Request Entry</button>
+            onsubmit="event.preventDefault(); alert('Thank you for joining The Parvaii Circle! We\'re excited to share lovely updates with you.');">
+            <input type="email" required placeholder="Your email address" class="newsletter-input"
+              aria-label="Your email address">
+            <button type="submit" class="newsletter-submit">Join the Circle →</button>
           </form>
+          <p class="newsletter-microcopy" style="font-size: 0.82rem; color: rgba(201, 183, 165, 0.7); margin-top: 1rem; letter-spacing: 0.05em;">Just lovely updates. No unnecessary messages.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         12. CONTACT SECTION (WE'D LOVE TO HEAR FROM YOU)
+         ======================================================================== -->
+    <section class="section-pad contact-section" id="contact">
+      <div class="container">
+        <div class="section-header reveal-on-scroll">
+          <span class="section-eyebrow">WE'D LOVE TO HEAR FROM YOU</span>
+          <h2 class="section-title">Let's Talk.</h2>
+          <p class="section-desc">Have a question about sizing, an order, or something you've seen in our collection? We're always happy to help.</p>
+        </div>
+
+        <div class="contact-cards-grid reveal-on-scroll">
+          <!-- WhatsApp Card -->
+          <div class="contact-card">
+            <div class="contact-card-icon whatsapp-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+              </svg>
+            </div>
+            <h3 class="contact-card-title">WhatsApp Support</h3>
+            <p class="contact-card-desc">For quick assistance with sizing, orders, and inquiries.</p>
+            <span class="contact-info-text">+91 62389 62054</span>
+            <a href="https://wa.me/916238962054" target="_blank" rel="noopener noreferrer" class="contact-action-btn">
+              Chat With Us on WhatsApp →
+            </a>
+          </div>
+
+          <!-- Email Card -->
+          <div class="contact-card">
+            <div class="contact-card-icon email-icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </div>
+            <h3 class="contact-card-title">Email Us</h3>
+            <p class="contact-card-desc">Send us your thoughts, order notes, or feedback anytime.</p>
+            <span class="contact-info-text">parvaiiofficial@gmail.com</span>
+            <a href="mailto:parvaiiofficial@gmail.com" class="contact-action-btn">
+              Send an Email →
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -582,64 +672,67 @@ UPCOMING PRODUCTS (NEXT LOOM PREVIEW)
   </main>
 
   <!-- ========================================================================
-       04. FOOTER
+       13. FOOTER
        ======================================================================== -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand-col">
-          <span class="footer-logo">Parvaii</span>
+          <span class="footer-logo">PARVAII</span>
+          <p class="footer-tagline" style="font-family: var(--font-display); font-size: 1.15rem; color: var(--c-sand); font-style: italic; margin-top: 0.35rem;">Thoughtfully chosen, just for you.</p>
           <p class="footer-about">
-            Maison dedicated to elevating the female kurti into enduring haute couture. Handcrafted with reverence for
-            historical Indian looms, natural mineral dyes, and architectural silhouettes.
+            A little dream built on friendship, love, and the joy of bringing beautiful styles to you.
           </p>
-          <div style="display: flex; gap: 0.75rem; margin-top: 1.5rem;">
-            <span style="font-size: 0.75rem; letter-spacing: 0.1em; color: var(--c-sand);">Colors: Midnight Navy #0B162A
-              & Champagne Sand #C9B7A5</span>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Explore</h4>
+          <ul class="footer-links">
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#collections">Shop All</a></li>
+            <li><a href="#collections">New Arrivals</a></li>
+            <li><a href="#upcoming">Upcoming Drops</a></li>
+            <li><a href="#story">Our Story</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Customer Care</h4>
+          <ul class="footer-links">
+            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="#contact">Size Guide</a></li>
+            <li><a href="#contact">Shipping Information</a></li>
+            <li><a href="#contact">Order Enquiries</a></li>
+            <li><a href="#contact">Return Policy</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Our Policies</h4>
+          <ul class="footer-policies-list">
+            <li><span class="policy-label">Delivery Charge:</span> ₹50</li>
+            <li><span class="policy-label">Cash on Delivery:</span> Not Available</li>
+            <li><span class="policy-label">Returns:</span> Not Accepted <small style="display:block; opacity: 0.7; font-size: 0.72rem;">(subject to applicable consumer rights)</small></li>
+          </ul>
+          <div class="footer-social-strip" style="margin-top: 1.25rem;">
+            <h4 class="footer-col-title" style="margin-bottom: 0.5rem;">Stay Connected</h4>
+            <div style="display: flex; gap: 1rem; font-size: 0.85rem;">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" style="color: var(--c-sand); text-decoration: none;">Instagram</a>
+              <span style="opacity: 0.4;">|</span>
+              <a href="https://wa.me/916238962054" target="_blank" rel="noopener noreferrer" style="color: var(--c-sand); text-decoration: none;">WhatsApp</a>
+              <span style="opacity: 0.4;">|</span>
+              <a href="mailto:parvaiiofficial@gmail.com" style="color: var(--c-sand); text-decoration: none;">Email</a>
+            </div>
           </div>
-        </div>
-
-        <div>
-          <h4 class="footer-col-title">Silhouettes</h4>
-          <ul class="footer-links">
-            <li><a href="#collections">Chanderi Straight Kurtis</a></li>
-            <li><a href="#collections">Flared Royal Anarkalis</a></li>
-            <li><a href="#collections">Awadhi Angrakha Wraps</a></li>
-            <li><a href="#collections">Couture Silk Kaftans</a></li>
-            <li><a href="#collections">Asymmetric Fusion Tunics</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="footer-col-title">Maison Services</h4>
-          <ul class="footer-links">
-            <li><a href="#upcoming">Upcoming Silhouettes</a></li>
-            <li><a href="#weave">Atelier Standards</a></li>
-            <li><a href="#story">Our Brand Story</a></li>
-            <li><a href="#">Bespoke Bridal Consultations</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4 class="footer-col-title">Client Care</h4>
-          <ul class="footer-links">
-            <li><a href="#">Complimentary Global Shipping</a></li>
-            <li><a href="#">Heirloom Silk Care Guide</a></li>
-            <li><a href="#">Traceable Artisan Supply Chain</a></li>
-            <li><a href="#">Authenticity Certificate Verification</a></li>
-            <li><a href="#">Concierge: care@parvaii.com</a></li>
-          </ul>
         </div>
       </div>
 
       <div class="footer-bottom">
         <div>
-          &copy; 2026 Parvaii Haute Couture Ltd. Handcrafted with architectural precision.
+          &copy; 2026 PARVAII. Made with love.
         </div>
-        <div style="display: flex; gap: 2rem;">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Concierge</a>
-          <a href="#">Accessibility Statement</a>
+        <div style="font-family: var(--font-display); font-style: italic; color: var(--c-sand); font-size: 0.95rem;">
+          Three friends. One dream. A story still unfolding.
         </div>
       </div>
     </div>
@@ -658,10 +751,10 @@ UPCOMING PRODUCTS (NEXT LOOM PREVIEW)
       <!-- Free Shipping Meter -->
       <div class="shipping-meter-wrap">
         <div class="shipping-text" id="shippingNoticeText">
-          Add <strong>$55</strong> more for Complimentary Express Shipping
+          ✦ <strong>Delivery Charge: ₹50</strong> &bull; Cash on Delivery: Not Available
         </div>
         <div class="shipping-bar">
-          <div class="shipping-bar-fill" id="shippingProgressBar" style="width: 80%;"></div>
+          <div class="shipping-bar-fill" id="shippingProgressBar" style="width: 100%;"></div>
         </div>
       </div>
 
@@ -679,12 +772,11 @@ UPCOMING PRODUCTS (NEXT LOOM PREVIEW)
         </form>
 
         <div class="cart-subtotal-row">
-          <span class="subtotal-label">Subtotal</span>
-          <span class="subtotal-amount" id="cartSubtotalAmount">$245.00</span>
+          <span class="subtotal-label">Total Payable</span>
+          <span class="subtotal-amount" id="cartSubtotalAmount">₹0</span>
         </div>
 
-        <p style="font-size: 0.72rem; color: var(--c-muted); margin-bottom: 0.75rem;">Taxes and complimentary artisan
-          gift packaging calculated at checkout.</p>
+        <p style="font-size: 0.72rem; color: var(--c-muted); margin-bottom: 0.75rem;">Delivery Charge: ₹50 applied. Returns: Not Accepted (subject to applicable consumer rights).</p>
 
         <button class="btn-primary checkout-btn" id="checkoutBtn">
           <span>Proceed to Checkout</span>
@@ -722,7 +814,7 @@ UPCOMING PRODUCTS (NEXT LOOM PREVIEW)
           <circle cx="11" cy="11" r="8"></circle>
           <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
         </svg>
-        <input type="text" id="searchField" class="search-field" placeholder="Search kurtis, Chanderi, Anarkali..."
+        <input type="text" id="searchField" class="search-field" placeholder="Search tops, colours, sizes (XS - XL)..."
           autocomplete="off">
       </div>
 
@@ -731,11 +823,11 @@ UPCOMING PRODUCTS (NEXT LOOM PREVIEW)
           style="font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--c-muted); display: block; margin-bottom: 0.5rem;">Trending
           Searches:</span>
         <div class="search-tags">
-          <button class="search-tag">Chanderi Silk</button>
-          <button class="search-tag">Royal Anarkali</button>
-          <button class="search-tag">Angrakha</button>
-          <button class="search-tag">Zardozi</button>
-          <button class="search-tag">Midnight Navy</button>
+          <button class="search-tag">Midnight Bloom</button>
+          <button class="search-tag">The Everyday Edit</button>
+          <button class="search-tag">Navy Blue</button>
+          <button class="search-tag">Mustard Yellow</button>
+          <button class="search-tag">Attached Sleeves</button>
         </div>
       </div>
 
@@ -753,8 +845,7 @@ UPCOMING PRODUCTS (NEXT LOOM PREVIEW)
       <button class="modal-close-btn" id="checkoutCloseBtn" aria-label="Close Checkout">&times;</button>
       <span class="craft-origin-badge">Encrypted 256-Bit SSL Concierge</span>
       <h2 style="font-size: 2rem; margin-bottom: 0.5rem;">Complete Your Order</h2>
-      <p style="font-size: 0.85rem; color: var(--c-muted); margin-bottom: 1.5rem;">Each garment is pressed, perfumed
-        with natural vetiver essence, and wrapped in archival muslin cloth.</p>
+      <p style="font-size: 0.85rem; color: var(--c-muted); margin-bottom: 1.5rem;">Thoughtfully packed, carefully prepared, and sent with love from our Trivandrum atelier.</p>
 
       <div
         style="background: var(--c-sand-subtle); padding: 1.25rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
@@ -763,11 +854,11 @@ UPCOMING PRODUCTS (NEXT LOOM PREVIEW)
             style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--c-muted);">Total
             Payable</span>
           <div style="font-family: var(--font-display); font-size: 1.75rem; font-weight: 600;"
-            id="checkoutSummaryTotal">$245.00</div>
+            id="checkoutSummaryTotal">₹549</div>
         </div>
         <span
-          style="font-size: 0.75rem; background: var(--c-midnight); color: var(--c-sand); padding: 0.35rem 0.75rem;">Express
-          Courier: Free</span>
+          style="font-size: 0.75rem; background: var(--c-midnight); color: var(--c-sand); padding: 0.35rem 0.75rem;">Delivery
+          Charge: ₹50</span>
       </div>
 
       <div style="display: grid; gap: 1rem; margin-bottom: 1.5rem;">
@@ -795,7 +886,7 @@ UPCOMING PRODUCTS (NEXT LOOM PREVIEW)
   <div class="toast-container" id="toastContainer" aria-live="polite"></div>
 
   <!-- Application Script -->
-  <script src="js/app.js?v=20261106-luxury-360-v2"></script>
+  <script src="js/app.js?v=20261106-parvaii-complete"></script>
 </body>
 
 </html>

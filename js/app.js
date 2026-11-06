@@ -15,51 +15,37 @@
   const CATALOG = [
     {
       id: 'parvaii-01',
-      title: 'The Sunlit Floral Kurti',
-      subtitle: 'Mustard Yellow Block-Print Cotton Kurti',
-      category: 'straight',
-      fabric: 'chanderi',
-      price: 245,
-      image: 'assets/images/kurti-yellow-floral.jpg',
-      badge: 'Bestseller',
-      craft: 'Hand Block-Printed Floral Motifs',
-      colors: ['#C9B7A5', '#0B162A'],
+      title: 'Midnight Bloom Top',
+      subtitle: 'A little floral charm, a little everyday elegance.',
+      category: 'tops',
+      fabric: 'cotton',
+      price: 499,
+      image: 'assets/images/kurti-navy-floral.jpg',
+      badge: 'THE FIRST DROP',
+      spec: 'Colour: Navy Blue',
+      craft: 'Colour: Navy Blue • Floral Charm',
+      colors: ['#0B162A'],
       sizes: ['XS', 'S', 'M', 'L', 'XL'],
-      description: 'A radiant mustard yellow kurti adorned with delicate hand block-printed floral motifs. Lightweight, breathable cotton that drapes beautifully for every occasion.',
-      origin: 'Chanderi, Madhya Pradesh',
-      care: 'Hand wash in cold water. Dry in shade.'
+      description: 'A little floral charm, a little everyday elegance. Meet Midnight Bloom, a beautiful navy blue floral top designed to bring effortless style to your everyday wardrobe.',
+      origin: 'Trivandrum Atelier',
+      care: 'Gentle hand wash in cold water.'
     },
     {
       id: 'parvaii-02',
-      title: 'The Midnight Bloom Kurti',
-      subtitle: 'Navy Blue Floral Vine Long-Sleeve Kurti',
-      category: 'anarkali',
-      fabric: 'silk',
-      price: 360,
-      image: 'assets/images/kurti-navy-floral.jpg',
-      badge: 'Heritage',
-      craft: 'Intricate Floral Vine Embroidery with Keyhole Neckline',
-      colors: ['#0B162A', '#C9B7A5'],
-      sizes: ['S', 'M', 'L', 'XL', 'XXL'],
-      description: 'Deep midnight navy with an elegant allover floral vine print. Features a distinctive keyhole neckline and full sleeves — a refined silhouette for modern grace.',
-      origin: 'Varanasi Weavers Guild',
-      care: 'Specialist dry clean only.'
-    },
-    {
-      id: 'parvaii-03',
-      title: 'The Vrinda Angrakha Tunic',
-      subtitle: 'Artisanal Overlap Wrap with Tassels & Chikankari Stitch',
-      category: 'angrakha',
-      fabric: 'mulmul',
-      price: 280,
-      image: 'assets/images/kurti-angrakha.jpg',
-      badge: 'Artisanal',
-      craft: 'Handmade Potli Tassels & Delicate Shadow Work',
-      colors: ['#C9B7A5', '#0B162A'],
+      title: 'The Everyday Edit',
+      subtitle: 'A beautiful addition to your everyday wardrobe.',
+      category: 'tops',
+      fabric: 'cotton',
+      price: 299,
+      image: 'assets/images/kurti-yellow-floral.jpg',
+      badge: 'NEW ARRIVAL',
+      spec: 'Attached Sleeves',
+      craft: 'Attached Sleeves • Easy to Style',
+      colors: ['#D4A017'],
       sizes: ['XS', 'S', 'M', 'L', 'XL'],
-      description: 'Inspired by royal Awadhi drapes, the Vrinda features a diagonal Angrakha wrap contour, finished with hand-braided midnight piping and cascading jewel-toned tassels.',
-      origin: 'Lucknow Atelier',
-      care: 'Gentle hand wash in cold water with mild silk soap.'
+      description: 'A beautiful addition to your everyday wardrobe. Easy to style, comfortable to wear, and perfect for days when you want to feel effortlessly put together. Attached Sleeves included.',
+      origin: 'Trivandrum Atelier',
+      care: 'Hand wash in cold water. Dry in shade.'
     }
   ];
 
@@ -67,23 +53,13 @@
      02. APPLICATION STATE
      -------------------------------------------------------------------------- */
   const state = {
-    cart: [
-      {
-        id: 'parvaii-01',
-        title: 'The Sunlit Floral Kurti',
-        price: 245,
-        size: 'M',
-        color: 'Mustard Yellow',
-        image: 'assets/images/kurti-yellow-floral.jpg',
-        quantity: 1
-      }
-    ],
-    wishlist: ['parvaii-02'],
+    cart: [],
+    wishlist: [],
     filter: 'all',
     sortBy: 'featured',
     promoCode: '',
     discount: 0,
-    freeShippingThreshold: 300,
+    deliveryFee: 50,
     upcomingWaitlist: []
   };
 
@@ -329,24 +305,30 @@
           </div>
           <div class="product-info">
             <div class="product-meta">
-              <span>${product.fabric.toUpperCase()}</span>
-              <span>${product.category.toUpperCase()}</span>
+              <span class="product-category-tag">${product.badge}</span>
+              <span class="product-size-range">Sizes: XS – XL</span>
             </div>
             <h3 class="product-title">${product.title}</h3>
-            <p class="product-craft-tag">${product.craft}</p>
-            <div class="product-swatches">
-              ${product.colors.map(col => `
-                <span class="color-swatch" style="background-color: ${col};" title="Available in tone ${col}"></span>
-              `).join('')}
+            <p class="product-card-subtitle">${product.subtitle}</p>
+            <div class="product-spec-pill">
+              <span>✦ ${product.spec}</span>
             </div>
             <div class="product-price-row">
-              <span class="product-price">$${product.price}</span>
-              <button class="add-bag-link" data-action="quick-add" data-id="${product.id}" data-size="${product.sizes[0]}">
-                Add to Bag 
-                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-              </button>
+              <div class="price-stack">
+                <span class="product-price-label">Price</span>
+                <span class="product-price">₹${product.price}</span>
+              </div>
+              <div class="product-buttons-row">
+                <button class="btn-card-details" data-action="quick-view" data-id="${product.id}" aria-label="View Details for ${product.title}">
+                  View Details
+                </button>
+                <button class="btn-card-order add-bag-link" data-action="quick-add" data-id="${product.id}" data-size="${product.sizes[0]}" aria-label="Order Now ${product.title}">
+                  <span>Order Now</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
         </article>
@@ -508,20 +490,15 @@
     }
 
     // Shipping progress
+    // Delivery fee & policy notice
     if (els.shippingProgress && els.shippingNotice) {
-      const remaining = state.freeShippingThreshold - finalSubtotal;
-      if (remaining <= 0) {
-        els.shippingProgress.style.width = '100%';
-        els.shippingNotice.innerHTML = '✨ <strong>Complimentary Express Shipping</strong> Unlocked!';
-      } else {
-        const pct = Math.min(100, Math.round((finalSubtotal / state.freeShippingThreshold) * 100));
-        els.shippingProgress.style.width = `${pct}%`;
-        els.shippingNotice.innerHTML = `Add <strong>$${remaining.toFixed(0)}</strong> more for Complimentary Express Shipping`;
-      }
+      els.shippingProgress.style.width = '100%';
+      els.shippingNotice.innerHTML = '✦ <strong>Delivery Charge: ₹50</strong> &bull; Cash on Delivery: Not Available';
     }
 
     if (els.cartSubtotal) {
-      els.cartSubtotal.textContent = `$${finalSubtotal.toFixed(2)}`;
+      const grandTotal = finalSubtotal > 0 ? (finalSubtotal + state.deliveryFee) : 0;
+      els.cartSubtotal.textContent = `₹${grandTotal.toFixed(0)}`;
     }
 
     // Cart Items
@@ -536,7 +513,7 @@
             <path d="M16 10a4 4 0 0 1-8 0"/>
           </svg>
           <p style="font-family: var(--font-display); font-size: 1.35rem; margin-bottom: 0.5rem;">Your shopping bag is empty</p>
-          <p style="font-size: 0.85rem; color: var(--c-muted);">Discover our handcrafted Chanderi & royal silk silhouettes.</p>
+          <p style="font-size: 0.85rem; color: var(--c-muted);">Discover pieces worth falling for.</p>
         </div>
       `;
       return;
@@ -548,7 +525,7 @@
         <div class="cart-item-info">
           <h4 class="cart-item-name">${item.title}</h4>
           <span class="cart-item-meta">Size: ${item.size} • ${item.color}</span>
-          <span class="cart-item-price">$${(item.price * item.quantity).toFixed(2)}</span>
+          <span class="cart-item-price">₹${(item.price * item.quantity).toFixed(0)}</span>
           <div class="qty-control">
             <button class="qty-btn" data-cart-action="dec" data-index="${idx}">-</button>
             <span class="qty-number">${item.quantity}</span>
@@ -790,7 +767,7 @@
       <div class="modal-details">
         <span class="product-meta" style="margin-bottom: 0.5rem;">${product.origin}</span>
         <h2 style="font-size: 2.25rem; margin-bottom: 0.5rem;">${product.title}</h2>
-        <p style="font-family: var(--font-display); font-size: 1.85rem; color: var(--c-midnight); font-weight: 600; margin-bottom: 1.25rem;">$${product.price}</p>
+        <p style="font-family: var(--font-display); font-size: 1.85rem; color: var(--c-midnight); font-weight: 600; margin-bottom: 1.25rem;">₹${product.price}</p>
         <p style="font-size: 0.95rem; color: var(--c-muted); line-height: 1.7; margin-bottom: 1.75rem;">${product.description}</p>
         
         <div style="margin-bottom: 1.5rem;">
@@ -805,12 +782,12 @@
         </div>
 
         <div style="background: var(--c-sand-subtle); padding: 1rem 1.25rem; border-left: 3px solid var(--c-sand-dark); margin-bottom: 1.75rem;">
-          <p style="font-size: 0.8rem; color: var(--c-midnight);"><strong>Craft Note:</strong> ${product.craft}</p>
+          <p style="font-size: 0.8rem; color: var(--c-midnight);"><strong>Details:</strong> ${product.spec || product.craft}</p>
           <p style="font-size: 0.75rem; color: var(--c-muted); margin-top: 0.25rem;">Care: ${product.care}</p>
         </div>
 
         <button class="btn-primary" id="modalAddCartBtn" style="width: 100%;">
-          <span>Add to Bag • $${product.price}</span>
+          <span>Order Now • ₹${product.price}</span>
         </button>
       </div>
     `;
@@ -901,19 +878,19 @@
     if (!els.searchResults) return;
 
     if (!query) {
-      els.searchResults.innerHTML = '<p style="color: var(--c-muted); font-size: 0.9rem;">Type to search silhouettes, Chanderi silks, or embroidery styles...</p>';
+      els.searchResults.innerHTML = '<p style="color: var(--c-muted); font-size: 0.9rem;">Type to search styles, floral tops, or new arrivals...</p>';
       return;
     }
 
     const matches = CATALOG.filter(item => 
       item.title.toLowerCase().includes(query) ||
       item.subtitle.toLowerCase().includes(query) ||
-      item.fabric.toLowerCase().includes(query) ||
+      (item.spec && item.spec.toLowerCase().includes(query)) ||
       item.craft.toLowerCase().includes(query)
     );
 
     if (matches.length === 0) {
-      els.searchResults.innerHTML = `<p style="color: var(--c-muted);">No garments found matching "${query}".</p>`;
+      els.searchResults.innerHTML = `<p style="color: var(--c-muted);">No styles found matching "${query}".</p>`;
       return;
     }
 
@@ -921,10 +898,10 @@
       <div style="display: grid; gap: 1rem; margin-top: 1rem;">
         ${matches.map(m => `
           <div style="display: flex; gap: 1.25rem; align-items: center; cursor: pointer; padding: 0.5rem; border-bottom: 1px solid var(--c-border);" data-search-id="${m.id}">
-            <img src="${m.image}" alt="${m.title}" style="width: 54px; height: 68px; object-fit: cover;">
+            <img src="${m.image}" alt="${m.title}" style="width: 54px; height: 68px; object-fit: cover; border-radius: 6px;">
             <div>
               <h4 style="font-size: 1.15rem; color: var(--c-midnight);">${m.title}</h4>
-              <p style="font-size: 0.8rem; color: var(--c-muted);">${m.craft} • $${m.price}</p>
+              <p style="font-size: 0.8rem; color: var(--c-muted);">${m.spec || m.craft} • ₹${m.price}</p>
             </div>
           </div>
         `).join('')}
@@ -988,10 +965,11 @@
 
     const subtotalRaw = state.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     const finalSub = subtotalRaw - (subtotalRaw * state.discount);
+    const grandTotal = finalSub > 0 ? (finalSub + state.deliveryFee) : 0;
 
     const summaryEl = document.getElementById('checkoutSummaryTotal');
     if (summaryEl) {
-      summaryEl.textContent = `$${finalSub.toFixed(2)}`;
+      summaryEl.textContent = `₹${grandTotal.toFixed(0)}`;
     }
   }
 
