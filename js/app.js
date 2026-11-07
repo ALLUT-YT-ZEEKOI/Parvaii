@@ -53,7 +53,7 @@
       subtitle: 'A breezy printed midi silhouette for effortless charm.',
       category: 'dresses',
       fabric: 'cotton',
-      price: 399,
+      price: 699,
       image: 'assets/images/kurti-blue-dress.jpg',
       badge: 'LIMITED DROP',
       spec: 'Printed Midi',
@@ -67,11 +67,29 @@
   ];
 
   /* --------------------------------------------------------------------------
-     02. APPLICATION STATE
+     02. APPLICATION STATE & PERSISTENCE
      -------------------------------------------------------------------------- */
+  function getInitialCart() {
+    try {
+      const data = localStorage.getItem('parvaii_cart');
+      return data ? JSON.parse(data) : [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function getInitialWishlist() {
+    try {
+      const data = localStorage.getItem('parvaii_wishlist');
+      return data ? JSON.parse(data) : [];
+    } catch (e) {
+      return [];
+    }
+  }
+
   const state = {
-    cart: [],
-    wishlist: [],
+    cart: getInitialCart(),
+    wishlist: getInitialWishlist(),
     filter: 'all',
     sortBy: 'featured',
     promoCode: '',
@@ -161,6 +179,7 @@
     setupScrollReveals();
     setupHeroBanner();
     setupLuxury360();
+    setupProductPage();
   }
 
   /* --------------------------------------------------------------------------
@@ -307,9 +326,9 @@
               </svg>
             </button>
             <img src="${product.image}" alt="${product.title}" class="product-img" loading="lazy">
-            <div class="card-hover-action" data-action="quick-view" data-id="${product.id}">
-              <span>✦ Quick Look & Sizing</span>
-            </div>
+            <a href="product.html?id=${product.id}" class="card-hover-action" aria-label="View Details for ${product.title}">
+              <span>✦ Explore Piece Details →</span>
+            </a>
           </div>
           <div class="product-info">
             <span class="product-eyebrow">${product.spec}</span>
@@ -321,9 +340,9 @@
             </div>
             <div class="product-card-divider"></div>
             <div class="product-card-actions">
-              <button class="btn-card-details" data-action="quick-view" data-id="${product.id}" aria-label="View Details for ${product.title}">
+              <a href="product.html?id=${product.id}" class="btn-card-details" aria-label="View Details for ${product.title}">
                 <span>View Details</span>
-              </button>
+              </a>
               <button class="btn-card-order" data-action="quick-add" data-id="${product.id}" data-size="${product.sizes[0]}" aria-label="Order Now ${product.title}">
                 <span>Order Now</span>
                 <span class="btn-arrow">→</span>
@@ -456,10 +475,11 @@
     document.body.style.overflow = '';
   }
 
-  function addToCart(product, size = 'M', color = 'Signature') {
+  function addToCart(product, size = 'M', color = 'Signature', qty = 1, openDrawer = true) {
+    const quantity = Math.max(1, parseInt(qty, 10) || 1);
     const existing = state.cart.find(item => item.id === product.id && item.size === size);
     if (existing) {
-      existing.quantity += 1;
+      existing.quantity += quantity;
     } else {
       state.cart.push({
         id: product.id,
@@ -468,15 +488,23 @@
         size: size,
         color: color,
         image: product.image,
-        quantity: 1
+        quantity: quantity
       });
     }
     renderCart();
-    openCartDrawer();
-    showToast(`Added "${product.title}" (Size ${size}) to bag.`, 'bag');
+    if (openDrawer) {
+      openCartDrawer();
+    } else {
+      const qtyText = quantity > 1 ? `${quantity}x ` : '';
+      showToast(`Added ${qtyText}"${product.title}" (${size}) to bag.`, 'bag');
+    }
   }
 
   function renderCart() {
+    try {
+      localStorage.setItem('parvaii_cart', JSON.stringify(state.cart));
+    } catch (e) {}
+
     const totalItems = state.cart.reduce((sum, item) => sum + item.quantity, 0);
     const subtotalRaw = state.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     const discountAmount = subtotalRaw * state.discount;
@@ -498,6 +526,15 @@
     if (els.cartSubtotal) {
       const grandTotal = finalSubtotal > 0 ? (finalSubtotal + state.deliveryFee) : 0;
       els.cartSubtotal.textContent = `₹${grandTotal.toFixed(0)}`;
+
+      const checkoutLabel = document.getElementById('checkoutBtnLabel');
+      if (checkoutLabel) {
+        if (state.cart.length > 0) {
+          checkoutLabel.textContent = `Order via WhatsApp • ₹${grandTotal.toFixed(0)}`;
+        } else {
+          checkoutLabel.textContent = 'Order via WhatsApp';
+        }
+      }
     }
 
     // Cart Items
@@ -522,16 +559,20 @@
       <div class="cart-item">
         <img src="${item.image}" alt="${item.title}" class="cart-item-img">
         <div class="cart-item-info">
-          <h4 class="cart-item-name">${item.title}</h4>
-          <span class="cart-item-meta">Size: ${item.size} • ${item.color}</span>
-          <span class="cart-item-price">₹${(item.price * item.quantity).toFixed(0)}</span>
-          <div class="qty-control">
-            <button class="qty-btn" data-cart-action="dec" data-index="${idx}">-</button>
-            <span class="qty-number">${item.quantity}</span>
-            <button class="qty-btn" data-cart-action="inc" data-index="${idx}">+</button>
+          <div class="cart-item-header">
+            <h4 class="cart-item-name">${item.title}</h4>
+            <button class="remove-item-btn" data-cart-action="remove" data-index="${idx}" aria-label="Remove item">Remove</button>
+          </div>
+          <span class="cart-item-meta">Size: ${item.size} &bull; ${item.color}</span>
+          <div class="cart-item-bottom">
+            <div class="qty-control">
+              <button class="qty-btn" data-cart-action="dec" data-index="${idx}" aria-label="Decrease quantity">&minus;</button>
+              <span class="qty-number">${item.quantity}</span>
+              <button class="qty-btn" data-cart-action="inc" data-index="${idx}" aria-label="Increase quantity">&plus;</button>
+            </div>
+            <span class="cart-item-price">₹${(item.price * item.quantity).toFixed(0)}</span>
           </div>
         </div>
-        <button class="remove-item-btn" data-cart-action="remove" data-index="${idx}">Remove</button>
       </div>
     `).join('');
 
@@ -759,58 +800,209 @@
   function openQuickView(product) {
     if (!els.quickviewContent) return;
 
+    let selectedSize = product.sizes && product.sizes.length > 1 ? product.sizes[1] : (product.sizes[0] || 'M');
+    let quantity = 1;
+
+    function getWhatsappUrl() {
+      const totalPrice = product.price * quantity;
+      const text = `Hello Parvaii Atelier! I would like to order:\n\n*${product.title}*\n• Size: ${selectedSize}\n• Quantity: ${quantity}\n• Total: ₹${totalPrice}\n\nPlease assist with payment and dispatch details.`;
+      return `https://wa.me/916238962054?text=${encodeURIComponent(text)}`;
+    }
+
     els.quickviewContent.innerHTML = `
       <div class="modal-media">
+        <span class="modal-media-badge">${product.badge || 'ATELIER EXCLUSIVE'}</span>
         <img src="${product.image}" alt="${product.title}">
+        <div class="modal-media-origin-tag">
+          <span>✦ Pure Cotton Atelier Edit &bull; Handcrafted in Trivandrum</span>
+        </div>
       </div>
       <div class="modal-details">
-        <span class="product-meta" style="margin-bottom: 0.5rem;">${product.origin}</span>
-        <h2 style="font-size: 2.25rem; margin-bottom: 0.5rem;">${product.title}</h2>
-        <p style="font-family: var(--font-display); font-size: 1.85rem; color: var(--c-midnight); font-weight: 600; margin-bottom: 1.25rem;">₹${product.price}</p>
-        <p style="font-size: 0.95rem; color: var(--c-muted); line-height: 1.7; margin-bottom: 1.75rem;">${product.description}</p>
-        
-        <div style="margin-bottom: 1.5rem;">
-          <label style="font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 0.5rem;">Select Size</label>
-          <div style="display: flex; gap: 0.5rem;" id="modalSizePicker">
-            ${product.sizes.map((s, idx) => `
-              <button class="size-pill-btn ${idx === 1 ? 'active' : ''}" style="padding: 0.45rem 1rem; color: var(--c-midnight); border-color: var(--c-border);" data-size="${s}">
-                ${s}
-              </button>
-            `).join('')}
+        <div class="modal-header-row">
+          <span class="modal-eyebrow">${product.origin} &bull; ${product.spec || 'Pure Cotton'}</span>
+          <span class="modal-stock-status">
+            <span class="stock-pulse"></span>
+            In Stock
+          </span>
+        </div>
+
+        <h2 class="modal-product-title">${product.title}</h2>
+
+        <div class="modal-price-wrap">
+          <span class="modal-price" id="quickviewPriceDisplay">₹${product.price}</span>
+          <span class="modal-price-tax">MRP inclusive of all taxes &bull; Trivandrum Atelier</span>
+        </div>
+
+        <p class="modal-description">${product.description}</p>
+
+        <!-- Size Selection -->
+        <div class="modal-option-header">
+          <span class="modal-option-label">Select Size: <strong id="quickviewSizeLabel">${selectedSize}</strong></span>
+          <button type="button" class="modal-size-guide-btn" id="modalSizeGuideTrigger">✦ Size Chart</button>
+        </div>
+        <div class="modal-size-picker" id="modalSizePicker" role="radiogroup" aria-label="Select Size">
+          ${product.sizes.map(s => `
+            <button type="button" class="modal-size-btn ${s === selectedSize ? 'is-selected' : ''}" data-size="${s}" aria-checked="${s === selectedSize ? 'true' : 'false'}" role="radio">
+              ${s}
+            </button>
+          `).join('')}
+        </div>
+
+        <!-- Quantity Stepper ("num btn") -->
+        <div class="modal-option-header" style="margin-bottom: 0.45rem;">
+          <span class="modal-option-label">Quantity</span>
+          <span style="font-size: 0.72rem; color: var(--c-muted);">Subtotal: <strong style="color: var(--c-midnight);" id="quickviewSubtotalDisplay">₹${product.price}</strong></span>
+        </div>
+        <div class="modal-purchase-controls">
+          <div class="modal-qty-stepper">
+            <button type="button" class="qty-btn qty-minus" id="quickviewQtyMinus" aria-label="Decrease Quantity">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </button>
+            <span class="qty-count" id="quickviewQtyCount">1</span>
+            <button type="button" class="qty-btn qty-plus" id="quickviewQtyPlus" aria-label="Increase Quantity">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            </button>
+          </div>
+
+          <div style="font-size: 0.72rem; color: #64748B;">
+            <span>Standard Kerala Delivery: ₹50</span>
           </div>
         </div>
 
-        <div style="background: var(--c-sand-subtle); padding: 1rem 1.25rem; border-left: 3px solid var(--c-sand-dark); margin-bottom: 1.75rem;">
-          <p style="font-size: 0.8rem; color: var(--c-midnight);"><strong>Details:</strong> ${product.spec || product.craft}</p>
-          <p style="font-size: 0.75rem; color: var(--c-muted); margin-top: 0.25rem;">Care: ${product.care}</p>
+        <!-- Dual Action Buttons: Add to Cart & Buy Now -->
+        <div class="modal-actions-group">
+          <button type="button" class="btn-modal-cart" id="modalAddCartBtn">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
+            <span>Add to Cart</span>
+          </button>
+
+          <button type="button" class="btn-modal-buynow" id="modalBuyNowBtn">
+            <span>Buy Now</span>
+            <span class="btn-arrow">→</span>
+          </button>
         </div>
 
-        <button class="btn-primary" id="modalAddCartBtn" style="width: 100%;">
-          <span>Order Now • ₹${product.price}</span>
-        </button>
+        <!-- Instant WhatsApp Ordering Direct Option -->
+        <a href="${getWhatsappUrl()}" class="modal-whatsapp-direct" id="modalWhatsappDirect" target="_blank" rel="noopener noreferrer">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+          </svg>
+          <span>Or Order via WhatsApp Assistant (+91 62389 62054)</span>
+        </a>
+
+        <!-- Specs & Garment Care -->
+        <div class="modal-garment-specs">
+          <div class="spec-row">
+            <span class="spec-key">Fabric & Style:</span>
+            <span class="spec-val">${product.craft || product.spec}</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">Wash Care:</span>
+            <span class="spec-val">${product.care}</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-key">Origin:</span>
+            <span class="spec-val">Handcrafted in our Trivandrum Atelier</span>
+          </div>
+        </div>
+
+        <!-- Trust Badges -->
+        <div class="modal-trust-strip">
+          <span class="trust-item"><span class="trust-icon">✦</span> 100% Breathable Cotton</span>
+          <span class="trust-item"><span class="trust-icon">✦</span> Atelier Packaging</span>
+          <span class="trust-item"><span class="trust-icon">✦</span> Direct Artisanship</span>
+        </div>
       </div>
     `;
 
-    // Size selection inside modal
-    let selectedSize = product.sizes[0];
-    const sizeBtns = els.quickviewContent.querySelectorAll('#modalSizePicker button');
+    // Elements
+    const sizeBtns = els.quickviewContent.querySelectorAll('#modalSizePicker .modal-size-btn');
+    const sizeLabel = els.quickviewContent.querySelector('#quickviewSizeLabel');
+    const qtyCount = els.quickviewContent.querySelector('#quickviewQtyCount');
+    const qtyMinus = els.quickviewContent.querySelector('#quickviewQtyMinus');
+    const qtyPlus = els.quickviewContent.querySelector('#quickviewQtyPlus');
+    const subtotalDisplay = els.quickviewContent.querySelector('#quickviewSubtotalDisplay');
+    const addCartBtn = els.quickviewContent.querySelector('#modalAddCartBtn');
+    const buyNowBtn = els.quickviewContent.querySelector('#modalBuyNowBtn');
+    const whatsappLink = els.quickviewContent.querySelector('#modalWhatsappDirect');
+    const sizeGuideBtn = els.quickviewContent.querySelector('#modalSizeGuideTrigger');
+
+    function updateView() {
+      if (qtyCount) qtyCount.textContent = quantity;
+      if (sizeLabel) sizeLabel.textContent = selectedSize;
+      const subtotal = product.price * quantity;
+      if (subtotalDisplay) subtotalDisplay.textContent = `₹${subtotal}`;
+      if (buyNowBtn) buyNowBtn.innerHTML = `<span>Buy Now &bull; ₹${subtotal}</span><span class="btn-arrow">→</span>`;
+      if (whatsappLink) whatsappLink.href = getWhatsappUrl();
+    }
+
+    // Initialize with current values
+    updateView();
+
+    // Size Selection
     sizeBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         sizeBtns.forEach(b => {
-          b.style.background = '';
-          b.style.color = 'var(--c-midnight)';
+          b.classList.remove('is-selected');
+          b.setAttribute('aria-checked', 'false');
         });
-        btn.style.background = 'var(--c-midnight)';
-        btn.style.color = 'var(--c-sand)';
+        btn.classList.add('is-selected');
+        btn.setAttribute('aria-checked', 'true');
         selectedSize = btn.dataset.size;
+        updateView();
       });
     });
 
-    const addBtn = els.quickviewContent.querySelector('#modalAddCartBtn');
-    addBtn.addEventListener('click', () => {
-      addToCart(product, selectedSize);
-      closeQuickView();
-    });
+    // Quantity Stepper ("num btn")
+    if (qtyMinus) {
+      qtyMinus.addEventListener('click', () => {
+        if (quantity > 1) {
+          quantity -= 1;
+          updateView();
+        }
+      });
+    }
+
+    if (qtyPlus) {
+      qtyPlus.addEventListener('click', () => {
+        if (quantity < 10) {
+          quantity += 1;
+          updateView();
+        }
+      });
+    }
+
+    // Size guide prompt
+    if (sizeGuideBtn) {
+      sizeGuideBtn.addEventListener('click', () => {
+        showToast('Size Guide: XS (32"), S (34"), M (36"), L (38"), XL (40") Bust.', 'info');
+      });
+    }
+
+    // Add To Cart
+    if (addCartBtn) {
+      addCartBtn.addEventListener('click', () => {
+        addToCart(product, selectedSize, 'Signature', quantity, true);
+        closeQuickView();
+      });
+    }
+
+    // Buy Now: Add to cart and immediately open WhatsApp!
+    if (buyNowBtn) {
+      buyNowBtn.addEventListener('click', () => {
+        addToCart(product, selectedSize, 'Signature', quantity, false);
+        closeQuickView();
+        const total = product.price * quantity + 50;
+        const msg = `Hello PARVAII Atelier! 🌸\n\nI would like to order:\n\n1. *${product.title}*\n   • Size: ${selectedSize}\n   • Quantity: ${quantity}\n   • Price: ₹${product.price} each (₹${product.price * quantity})\n\n──────────────\n• Delivery Charge: ₹50 (Kerala)\n• *TOTAL PAYABLE: ₹${total}*\n──────────────\n\n*My Delivery Details:*\n• Name:\n• Delivery Address:\n• Pincode:\n• Phone Number:\n\nPlease confirm my order and share payment details. Thank you!`;
+        const waUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(msg)}`;
+        window.open(waUrl, '_blank', 'noopener,noreferrer');
+        showToast('Connecting directly to WhatsApp with your order details...', 'bag');
+      });
+    }
 
     els.quickviewModal.classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -920,17 +1112,54 @@
   }
 
   /* --------------------------------------------------------------------------
-     15. CHECKOUT FLOW SIMULATION
+     15. DIRECT WHATSAPP ORDER & CHECKOUT FLOW
      -------------------------------------------------------------------------- */
+  const WHATSAPP_PHONE = '916238962054';
+
+  function buildCartWhatsAppMessage() {
+    if (state.cart.length === 0) return '';
+
+    const subtotalRaw = state.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    const discountAmount = subtotalRaw * state.discount;
+    const finalSub = subtotalRaw - discountAmount;
+    const grandTotal = finalSub > 0 ? (finalSub + state.deliveryFee) : 0;
+
+    const itemsList = state.cart.map((item, idx) => {
+      return `${idx + 1}. *${item.title}*\n   • Size: ${item.size}\n   • Quantity: ${item.quantity}\n   • Price: ₹${item.price} each (₹${item.price * item.quantity})`;
+    }).join('\n\n');
+
+    let msg = `Hello PARVAII Atelier! 🌸\n\nI would like to place an order from your collection:\n\n${itemsList}\n\n`;
+    msg += `──────────────\n`;
+    msg += `• Subtotal: ₹${subtotalRaw.toFixed(0)}\n`;
+    if (state.discount > 0) {
+      msg += `• Promo Discount (${(state.discount * 100).toFixed(0)}%): -₹${discountAmount.toFixed(0)}\n`;
+    }
+    msg += `• Delivery Charge: ₹${state.deliveryFee} (Kerala)\n`;
+    msg += `• *TOTAL PAYABLE: ₹${grandTotal.toFixed(0)}*\n`;
+    msg += `──────────────\n\n`;
+    msg += `*My Delivery Details:*\n`;
+    msg += `• Name:\n`;
+    msg += `• Delivery Address:\n`;
+    msg += `• Pincode:\n`;
+    msg += `• Phone Number:\n\n`;
+    msg += `Please confirm my order and share payment details. Thank you!`;
+
+    return msg;
+  }
+
   function setupCheckoutModal() {
     if (els.checkoutBtn) {
-      els.checkoutBtn.addEventListener('click', () => {
+      els.checkoutBtn.addEventListener('click', (e) => {
+        e.preventDefault();
         if (state.cart.length === 0) {
-          showToast('Your bag is empty! Select a kurti first.', 'alert');
+          showToast('Your shopping bag is empty. Please select a piece first.', 'alert');
           return;
         }
-        closeCartDrawer();
-        openCheckoutModal();
+
+        const msg = buildCartWhatsAppMessage();
+        const waUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(msg)}`;
+        window.open(waUrl, '_blank', 'noopener,noreferrer');
+        showToast('Connecting directly to WhatsApp with your order details...', 'bag');
       });
     }
 
@@ -946,19 +1175,20 @@
 
     if (els.checkoutPayBtn) {
       els.checkoutPayBtn.addEventListener('click', () => {
-        els.checkoutPayBtn.innerHTML = '<span>Processing Encrypted Payment...</span>';
+        els.checkoutPayBtn.innerHTML = '<span>Connecting to WhatsApp Concierge...</span>';
         setTimeout(() => {
           closeCheckoutModal();
-          state.cart = [];
-          renderCart();
-          showToast('Order confirmed! An artisan package is being prepared for you.', 'check');
-        }, 1500);
+          const msg = buildCartWhatsAppMessage();
+          const waUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(msg)}`;
+          window.open(waUrl, '_blank', 'noopener,noreferrer');
+        }, 600);
       });
     }
   }
 
   function openCheckoutModal() {
     if (!els.checkoutModal) return;
+    closeCartDrawer();
     els.checkoutModal.classList.add('active');
     document.body.style.overflow = 'hidden';
 
@@ -1300,6 +1530,310 @@
     });
 
     render2D();
+  }
+
+  /* --------------------------------------------------------------------------
+     18. DEDICATED ATELIER PRODUCT DETAIL PAGE (PDP)
+     -------------------------------------------------------------------------- */
+  function setupProductPage() {
+    const pdpContainer = document.getElementById('productDetailPage');
+    if (!pdpContainer) return;
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const prodId = urlParams.get('id') || 'parvaii-03';
+    const product = CATALOG.find(p => p.id === prodId) || CATALOG[2];
+
+    let selectedSize = product.sizes && product.sizes.length > 1 ? product.sizes[1] : (product.sizes[0] || 'M');
+    let quantity = 1;
+
+    // Update document title for luxury feel
+    document.title = `${product.title} — PARVAII Atelier`;
+
+    function getWhatsappUrl() {
+      const total = product.price * quantity;
+      const text = `Hello Parvaii Atelier! I would like to order:\n\n*${product.title}*\n• Size: ${selectedSize}\n• Quantity: ${quantity}\n• Total: ₹${total}\n\nPlease share payment and delivery details.`;
+      return `https://wa.me/916238962054?text=${encodeURIComponent(text)}`;
+    }
+
+    pdpContainer.innerHTML = `
+      <!-- Breadcrumbs Bar -->
+      <nav class="product-breadcrumbs-bar" aria-label="Breadcrumb">
+        <div class="product-breadcrumbs-inner">
+          <a href="index.html#collections" class="back-link">
+            <span>← Back to Collections</span>
+          </a>
+          <div class="breadcrumb-trail">
+            <a href="index.html">Home</a>
+            <span class="breadcrumb-sep">/</span>
+            <a href="index.html#collections">Collections</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-current">${product.title}</span>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Main Product Stage -->
+      <section class="pdp-main-section">
+        <div class="pdp-grid">
+          
+          <!-- Left Gallery Column -->
+          <div class="pdp-gallery-wrap">
+            <div class="pdp-main-media">
+              <span class="pdp-media-badge">${product.badge || 'ATELIER EXCLUSIVE'}</span>
+              <img id="pdpMainImage" src="${product.image}" alt="${product.title}">
+            </div>
+          </div>
+
+          <!-- Right Editorial Info Column -->
+          <div class="pdp-info-wrap">
+            <div class="pdp-eyebrow-row">
+              <span class="pdp-eyebrow">${product.origin} &bull; ${product.spec}</span>
+              <span class="pdp-stock-badge">
+                <span class="stock-pulse"></span>
+                In Stock &bull; Ready to Dispatch
+              </span>
+            </div>
+
+            <h1 class="pdp-title">${product.title}</h1>
+
+            <div class="pdp-price-wrap">
+              <span class="pdp-price" id="pdpDisplayPrice">₹${product.price}</span>
+              <span class="pdp-tax-note">MRP inclusive of all taxes &bull; Standard Kerala Delivery ₹50</span>
+            </div>
+
+            <p class="pdp-description">${product.description}</p>
+
+            <!-- Size Selector -->
+            <div class="pdp-size-header">
+              <span class="pdp-size-label">Select Size: <strong id="pdpSelectedSizeLabel">${selectedSize}</strong></span>
+              <button type="button" class="pdp-size-guide-btn" id="pdpSizeGuideBtn">✦ Size Chart Guide</button>
+            </div>
+            <div class="pdp-size-chips" id="pdpSizeChips" role="radiogroup" aria-label="Select Size">
+              ${product.sizes.map(s => `
+                <button type="button" class="pdp-size-chip ${s === selectedSize ? 'is-active' : ''}" data-size="${s}" aria-checked="${s === selectedSize ? 'true' : 'false'}" role="radio">
+                  ${s}
+                </button>
+              `).join('')}
+            </div>
+
+            <!-- Quantity & Actions Group -->
+            <div class="pdp-actions-row">
+              <div class="pdp-qty-stepper">
+                <button type="button" class="pdp-qty-btn" id="pdpQtyDec" aria-label="Decrease Quantity">&minus;</button>
+                <span class="pdp-qty-count" id="pdpQtyVal">1</span>
+                <button type="button" class="pdp-qty-btn" id="pdpQtyInc" aria-label="Increase Quantity">&plus;</button>
+              </div>
+
+              <button type="button" class="pdp-btn-cart" id="pdpAddCartBtn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <path d="M16 10a4 4 0 0 1-8 0"></path>
+                </svg>
+                <span>Add to Cart</span>
+              </button>
+
+              <button type="button" class="pdp-btn-buynow" id="pdpBuyNowBtn">
+                <span id="pdpBuyNowText">Buy Now &bull; ₹${product.price}</span>
+                <span class="btn-arrow">→</span>
+              </button>
+            </div>
+
+            <!-- WhatsApp Direct Concierge -->
+            <a href="${getWhatsappUrl()}" class="pdp-whatsapp-btn" id="pdpWhatsappLink" target="_blank" rel="noopener noreferrer">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+              </svg>
+              <span>Instant Order via WhatsApp Concierge (+91 62389 62054)</span>
+            </a>
+
+            <!-- Provenance & Craft Strip -->
+            <div class="pdp-craft-provenance-box">
+              <div class="provenance-item">
+                <span class="provenance-icon">✦</span>
+                <span class="provenance-text">100% Breathable Pure Cotton</span>
+              </div>
+              <div class="provenance-item">
+                <span class="provenance-icon">🌿</span>
+                <span class="provenance-text">Artisan Handcrafted in Trivandrum</span>
+              </div>
+              <div class="provenance-item">
+                <span class="provenance-icon">📦</span>
+                <span class="provenance-text">Bespoke Atelier Gift Packaging</span>
+              </div>
+            </div>
+
+            <!-- Atelier Accordion Info Tabs -->
+            <div class="pdp-accordions">
+              <div class="pdp-accordion-item is-open">
+                <button type="button" class="pdp-accordion-btn">
+                  <span class="pdp-accordion-title">Fabric & Craftsmanship</span>
+                  <span class="pdp-accordion-icon">+</span>
+                </button>
+                <div class="pdp-accordion-panel">
+                  <p>Pure soft breathable cotton thoughtfully chosen for all-day Kerala comfort. Beautiful drape, fine stitching, and durable seams made to retain vibrancy wash after wash.</p>
+                </div>
+              </div>
+
+              <div class="pdp-accordion-item">
+                <button type="button" class="pdp-accordion-btn">
+                  <span class="pdp-accordion-title">Garment Wash Care</span>
+                  <span class="pdp-accordion-icon">+</span>
+                </button>
+                <div class="pdp-accordion-panel">
+                  <p>${product.care} Hand wash in cold water with mild detergent. Dry inside out in shade to preserve print vibrancy. Gentle steam iron.</p>
+                </div>
+              </div>
+
+              <div class="pdp-accordion-item">
+                <button type="button" class="pdp-accordion-btn">
+                  <span class="pdp-accordion-title">Shipping & Packaging</span>
+                  <span class="pdp-accordion-icon">+</span>
+                </button>
+                <div class="pdp-accordion-panel">
+                  <p>Dispatched with care within 24–48 hours from our Trivandrum atelier. Packaged in eco-conscious signature Parvaii wrap with a handwritten note.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- You May Also Adore Section -->
+      <section class="pdp-related-section">
+        <div class="container">
+          <div class="section-header" style="margin-bottom: 2.5rem;">
+            <span class="section-eyebrow">COMPLETE YOUR LOOK</span>
+            <h2 class="section-title">You May Also Adore</h2>
+          </div>
+          <div class="product-grid pdp-related-grid">
+            ${CATALOG.filter(p => p.id !== product.id).map(related => `
+              <article class="product-card">
+                <div class="product-media-wrap">
+                  <span class="card-badge">${related.badge}</span>
+                  <img src="${related.image}" alt="${related.title}" class="product-img">
+                  <a href="product.html?id=${related.id}" class="card-hover-action">
+                    <span>✦ Explore Piece Details →</span>
+                  </a>
+                </div>
+                <div class="product-info">
+                  <span class="product-eyebrow">${related.spec}</span>
+                  <h3 class="product-title">${related.title}</h3>
+                  <p class="product-subtitle">${related.craft || related.subtitle}</p>
+                  <div class="product-meta-row">
+                    <span class="product-price">₹${related.price}</span>
+                    <span class="product-sizes-badge">Sizes: XS – XL</span>
+                  </div>
+                  <div class="product-card-divider"></div>
+                  <div class="product-card-actions">
+                    <a href="product.html?id=${related.id}" class="btn-card-details">
+                      <span>View Details</span>
+                    </a>
+                    <button class="btn-card-order" data-action="quick-add" data-id="${related.id}" data-size="${related.sizes[0]}">
+                      <span>Order Now</span>
+                      <span class="btn-arrow">→</span>
+                    </button>
+                  </div>
+                </div>
+              </article>
+            `).join('')}
+          </div>
+        </div>
+      </section>
+    `;
+
+    // Interactivity
+    const sizeChips = pdpContainer.querySelectorAll('#pdpSizeChips .pdp-size-chip');
+    const sizeLabel = pdpContainer.querySelector('#pdpSelectedSizeLabel');
+    const qtyVal = pdpContainer.querySelector('#pdpQtyVal');
+    const qtyInc = pdpContainer.querySelector('#pdpQtyInc');
+    const qtyDec = pdpContainer.querySelector('#pdpQtyDec');
+    const buyNowText = pdpContainer.querySelector('#pdpBuyNowText');
+    const addCartBtn = pdpContainer.querySelector('#pdpAddCartBtn');
+    const buyNowBtn = pdpContainer.querySelector('#pdpBuyNowBtn');
+    const whatsappLink = pdpContainer.querySelector('#pdpWhatsappLink');
+    const sizeGuideBtn = pdpContainer.querySelector('#pdpSizeGuideBtn');
+
+    function updatePdpView() {
+      if (qtyVal) qtyVal.textContent = quantity;
+      if (sizeLabel) sizeLabel.textContent = selectedSize;
+      const subtotal = product.price * quantity;
+      if (buyNowText) buyNowText.innerHTML = `Buy Now &bull; ₹${subtotal}`;
+      if (whatsappLink) whatsappLink.href = getWhatsappUrl();
+    }
+
+    sizeChips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        sizeChips.forEach(c => {
+          c.classList.remove('is-active');
+          c.setAttribute('aria-checked', 'false');
+        });
+        chip.classList.add('is-active');
+        chip.setAttribute('aria-checked', 'true');
+        selectedSize = chip.dataset.size;
+        updatePdpView();
+      });
+    });
+
+    if (qtyDec) {
+      qtyDec.addEventListener('click', () => {
+        if (quantity > 1) {
+          quantity -= 1;
+          updatePdpView();
+        }
+      });
+    }
+
+    if (qtyInc) {
+      qtyInc.addEventListener('click', () => {
+        if (quantity < 10) {
+          quantity += 1;
+          updatePdpView();
+        }
+      });
+    }
+
+    if (sizeGuideBtn) {
+      sizeGuideBtn.addEventListener('click', () => {
+        showToast('Size Guide: XS (32"), S (34"), M (36"), L (38"), XL (40") Bust.', 'info');
+      });
+    }
+
+    if (addCartBtn) {
+      addCartBtn.addEventListener('click', () => {
+        addToCart(product, selectedSize, 'Signature', quantity, true);
+      });
+    }
+
+    if (buyNowBtn) {
+      buyNowBtn.addEventListener('click', () => {
+        addToCart(product, selectedSize, 'Signature', quantity, false);
+        const subtotal = product.price * quantity;
+        const total = subtotal + 50;
+        const msg = `Hello PARVAII Atelier! 🌸\n\nI would like to order:\n\n1. *${product.title}*\n   • Size: ${selectedSize}\n   • Quantity: ${quantity}\n   • Price: ₹${product.price} each (₹${subtotal})\n\n──────────────\n• Delivery Charge: ₹50 (Kerala)\n• *TOTAL PAYABLE: ₹${total}*\n──────────────\n\n*My Delivery Details:*\n• Name:\n• Delivery Address:\n• Pincode:\n• Phone Number:\n\nPlease confirm my order and share payment details. Thank you!`;
+        const waUrl = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(msg)}`;
+        window.open(waUrl, '_blank', 'noopener,noreferrer');
+        showToast('Connecting directly to WhatsApp with your order details...', 'bag');
+      });
+    }
+
+    // Accordions
+    pdpContainer.querySelectorAll('.pdp-accordion-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.pdp-accordion-item');
+        item.classList.toggle('is-open');
+      });
+    });
+
+    // Attach quick add for related products
+    pdpContainer.querySelectorAll('[data-action="quick-add"]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.dataset.id;
+        const item = CATALOG.find(p => p.id === id);
+        if (item) addToCart(item, item.sizes[0], 'Signature', 1, true);
+      });
+    });
   }
 
   // Run when DOM is ready

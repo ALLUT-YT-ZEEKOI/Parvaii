@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details — PARVAII Atelier</title>
+  <meta name="description"
+    content="Discover authentic, handcrafted Kerala luxury garments at PARVAII. Thoughtfully chosen styles with pure breathable cotton.">
+  <meta name="keywords"
+    content="Parvaii, female clothing, everyday elegance, boutique tops, Trivandrum fashion, floral tops, comfortable styles">
+  <meta name="theme-color" content="#0B162A">
+
+  <!-- Google Fonts Preconnect & Stylesheets -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css?v=20261107-footer-center-v19">
+</head>
+
+<body class="product-page-body">
+
+  <!-- Accessibility Skip Link -->
+  <a href="#productDetailPage" class="skip-link">Skip to product details</a>
+
+  <!-- ========================================================================
+       01. ANNOUNCEMENT BAR (MARQUEE)
+       ======================================================================== -->
+  <aside class="announcement" aria-label="Special Announcements">
+    <div class="marquee" aria-label="Collection announcements">
+      <span>A LITTLE SOMETHING SPECIAL IS WAITING FOR YOU &nbsp;✦&nbsp; DISCOVER OUR LATEST COLLECTION &nbsp;✦&nbsp; NEW STYLES, NEW STORIES, SAME LOVE &nbsp;✦&nbsp;</span>
+      <span aria-hidden="true">A LITTLE SOMETHING SPECIAL IS WAITING FOR YOU &nbsp;✦&nbsp; DISCOVER OUR LATEST COLLECTION &nbsp;✦&nbsp; NEW STYLES, NEW STORIES, SAME LOVE &nbsp;✦&nbsp;</span>
+    </div>
+  </aside>
+
+  <!-- Navigation Drawer (Side Panel) -->
+  <div class="menu-overlay drawer-backdrop" id="menuOverlay" hidden></div>
+  <aside class="menu-drawer drawer" id="menuDrawer" aria-hidden="true">
+    <div class="menu-drawer-head drawer-head">
+      <span class="menu-drawer-title">PARVAII</span>
+      <button class="icon-btn menu-close-btn" id="menuCloseBtn" aria-label="Close menu">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <nav class="menu-drawer-nav" aria-label="Primary Navigation">
+      <a href="index.html#hero" class="menu-link">Home</a>
+      <a href="index.html#collections" class="menu-link">Shop All</a>
+      <a href="index.html#collections" class="menu-link">New Arrivals</a>
+      <a href="index.html#upcoming" class="menu-link">Coming Soon</a>
+      <a href="index.html#story" class="menu-link">Our Story</a>
+      <a href="index.html#contact" class="menu-link">Contact</a>
+    </nav>
+  </aside>
+
+  <!-- ========================================================================
+       02. SITE HEADER (MAISON BRAND BAR)
+       ======================================================================== -->
+  <header class="site-header nav product-page-header" id="siteHeader">
+    <button class="icon-btn mobile-toggle" id="menuToggleBtn" aria-label="Open navigation" aria-controls="menuDrawer" aria-expanded="false">
+      <svg viewBox="0 0 24 24"><path d="M3 7h18M3 17h18"/></svg>
+    </button>
+
+    <a class="brand" href="index.html" aria-label="PARVAII Home">
+      <img src="assets/Logo_png.png" alt="Parvaii">
+    </a>
+
+    <!-- Desktop Navigation Bar -->
+    <nav class="nav-center-links" aria-label="Desktop Navigation">
+      <a href="index.html#hero">Home</a>
+      <a href="index.html#collections" class="active">Shop All</a>
+      <a href="index.html#collections">New Arrivals</a>
+      <a href="index.html#upcoming">Coming Soon</a>
+      <a href="index.html#story">Our Story</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+
+    <div class="nav-actions header-actions">
+      <button class="icon-btn search-open-btn" id="searchButton" aria-label="Search Collections">
+        <svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg>
+      </button>
+
+      <button class="icon-btn" id="headerWishlistBtn" aria-label="View Wishlist">
+        <svg viewBox="0 0 24 24"><path d="M20.8 8.6c0 4.1-8.8 10.1-8.8 10.1S3.2 12.7 3.2 8.6a4.7 4.7 0 0 1 8.8-2.2 4.7 4.7 0 0 1 8.8 2.2Z"/></svg>
+        <span class="badge-count" id="wishlistCount">0</span>
+      </button>
+
+      <button class="icon-btn cart-open-btn" id="cartButton" aria-label="Shopping Bag" title="Shopping Bag">
+        <svg viewBox="0 0 24 24"><path d="M5 8h14l-1 13H6L5 8ZM9 9V6a3 3 0 0 1 6 0v3"/></svg>
+        <span class="badge-count" id="cartBadgeCount">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       03. DEDICATED PRODUCT DETAILS CONTAINER
+       ======================================================================== -->
+  <main id="productDetailPage">
+    <!-- Hydrated dynamically by setupProductPage() in app.js -->
+  </main>
+
+  <!-- ========================================================================
+       04. FOOTER
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand-col">
+          <span class="footer-logo">PARVAII</span>
+          <p class="footer-tagline" style="font-family: var(--font-display); font-size: 1.15rem; color: var(--c-sand); font-style: italic; margin-top: 0.35rem;">Thoughtfully chosen, just for you.</p>
+          <p class="footer-about">
+            A little dream built on friendship, love, and the joy of bringing beautiful styles to you.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Explore</h4>
+          <ul class="footer-links">
+            <li><a href="index.html#hero">Home</a></li>
+            <li><a href="index.html#collections">Shop All</a></li>
+            <li><a href="index.html#collections">New Arrivals</a></li>
+            <li><a href="index.html#upcoming">Upcoming Drops</a></li>
+            <li><a href="index.html#story">Our Story</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Customer Care</h4>
+          <ul class="footer-links">
+            <li><a href="index.html#contact">Contact Us</a></li>
+            <li><a href="index.html#contact">Size Guide</a></li>
+            <li><a href="index.html#contact">Shipping Information</a></li>
+            <li><a href="index.html#contact">Order Enquiries</a></li>
+            <li><a href="index.html#contact">Return Policy</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Our Policies</h4>
+          <ul class="footer-policies-list">
+            <li><span class="policy-label">Delivery Charge:</span> ₹50</li>
+            <li><span class="policy-label">Cash on Delivery:</span> Not Available</li>
+            <li><span class="policy-label">Returns:</span> Not Accepted <small style="display:block; opacity: 0.7; font-size: 0.72rem;">(subject to applicable consumer rights)</small></li>
+          </ul>
+          <div class="footer-social-strip" style="margin-top: 1.25rem;">
+            <h4 class="footer-col-title" style="margin-bottom: 0.5rem;">Stay Connected</h4>
+            <div style="display: flex; gap: 1rem; font-size: 0.85rem;">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" style="color: var(--c-sand); text-decoration: none;">Instagram</a>
+              <span style="opacity: 0.4;">|</span>
+              <a href="https://wa.me/916238962054" target="_blank" rel="noopener noreferrer" style="color: var(--c-sand); text-decoration: none;">WhatsApp</a>
+              <span style="opacity: 0.4;">|</span>
+              <a href="mailto:parvaiiofficial@gmail.com" style="color: var(--c-sand); text-decoration: none;">Email</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 PARVAII. Made with love.
+        </div>
+        <div style="font-family: var(--font-display); font-style: italic; color: var(--c-sand); font-size: 0.95rem;">
+          Three friends. One dream. A story still unfolding.
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       05. CART SLIDE-OVER DRAWER
+       ======================================================================== -->
+  <div class="cart-drawer-overlay" id="cartDrawerOverlay" aria-modal="true" role="dialog" aria-label="Shopping Bag">
+    <div class="cart-drawer">
+      <div class="drawer-header">
+        <h3 class="drawer-title">Shopping Bag</h3>
+        <button class="drawer-close-btn" id="cartCloseBtn" aria-label="Close Shopping Bag">&times;</button>
+      </div>
+
+      <!-- Free Shipping Meter -->
+      <div class="shipping-meter-wrap">
+        <div class="shipping-text" id="shippingNoticeText">
+          ✦ <strong>Delivery Charge: ₹50</strong> &bull; Cash on Delivery: Not Available
+        </div>
+        <div class="shipping-bar">
+          <div class="shipping-bar-fill" id="shippingProgressBar" style="width: 100%;"></div>
+        </div>
+      </div>
+
+      <!-- Cart Items List -->
+      <div class="cart-items-body" id="cartItemsList">
+        <!-- Rendered by JS -->
+      </div>
+
+      <!-- Cart Drawer Footer -->
+      <div class="drawer-footer">
+        <form class="promo-form" id="promoForm">
+          <input type="text" class="promo-input" id="promoInput" placeholder="Promo code (e.g. PARVAII10)"
+            aria-label="Promo code">
+          <button type="submit" class="promo-btn">Apply</button>
+        </form>
+
+        <div class="cart-subtotal-row">
+          <span class="subtotal-label">Total Payable</span>
+          <span class="subtotal-amount" id="cartSubtotalAmount">₹0</span>
+        </div>
+
+        <p style="font-size: 0.72rem; color: var(--c-muted); margin-bottom: 0.75rem;">Delivery Charge: ₹50 applied. Returns: Not Accepted (subject to applicable consumer rights).</p>
+
+        <button class="checkout-btn" id="checkoutBtn" aria-label="Order via WhatsApp">
+          <svg class="whatsapp-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+          </svg>
+          <span id="checkoutBtnLabel">Order via WhatsApp</span>
+          <span class="btn-arrow">→</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       06. INSTANT SEARCH MODAL
+       ======================================================================== -->
+  <div class="modal-overlay" id="searchModal" role="dialog" aria-modal="true" aria-label="Search Collections">
+    <div class="search-modal-card">
+      <button class="modal-close-btn" id="searchCloseBtn" aria-label="Close Search">&times;</button>
+      <div class="search-input-wrap">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="searchField" class="search-field" placeholder="Search tops, colours, sizes (XS - XL)..."
+          autocomplete="off">
+      </div>
+
+      <div style="margin-bottom: 1rem;">
+        <span
+          style="font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--c-muted); display: block; margin-bottom: 0.5rem;">Trending
+          Searches:</span>
+        <div class="search-tags">
+          <button class="search-tag">Midnight Bloom</button>
+          <button class="search-tag">The Everyday Edit</button>
+          <button class="search-tag">Navy Blue</button>
+          <button class="search-tag">Mustard Yellow</button>
+          <button class="search-tag">Attached Sleeves</button>
+        </div>
+      </div>
+
+      <div id="searchResults">
+        <!-- Live search matches -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       07. SIMULATED CHECKOUT MODAL
+       ======================================================================== -->
+  <div class="modal-overlay" id="checkoutModal" role="dialog" aria-modal="true" aria-label="Secure Checkout">
+    <div class="quickview-card" style="max-width: 680px; grid-template-columns: 1fr; padding: 2.5rem;">
+      <button class="modal-close-btn" id="checkoutCloseBtn" aria-label="Close Checkout">&times;</button>
+      <span class="craft-origin-badge">Encrypted 256-Bit SSL Concierge</span>
+      <h2 style="font-size: 2rem; margin-bottom: 0.5rem;">Complete Your Order</h2>
+      <p style="font-size: 0.85rem; color: var(--c-muted); margin-bottom: 1.5rem;">Thoughtfully packed, carefully prepared, and sent with love from our Trivandrum atelier.</p>
+
+      <div
+        style="background: var(--c-sand-subtle); padding: 1.25rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <span
+            style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--c-muted);">Total
+            Payable</span>
+          <div style="font-family: var(--font-display); font-size: 1.75rem; font-weight: 600;"
+            id="checkoutSummaryTotal">₹549</div>
+        </div>
+        <span
+          style="font-size: 0.75rem; background: var(--c-midnight); color: var(--c-sand); padding: 0.35rem 0.75rem;">Delivery
+          Charge: ₹50</span>
+      </div>
+
+      <div style="display: grid; gap: 1rem; margin-bottom: 1.5rem;">
+        <input type="text" placeholder="Full Delivery Name" value="Ameen"
+          style="padding: 0.75rem; border: 1px solid var(--c-border); font-size: 0.85rem;">
+        <input type="text" placeholder="Shipping Address & Postal Code" value="Heritage Suite 402, High Street"
+          style="padding: 0.75rem; border: 1px solid var(--c-border); font-size: 0.85rem;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <input type="text" placeholder="Card Number •••• 8821" value="•••• •••• •••• 8821"
+            style="padding: 0.75rem; border: 1px solid var(--c-border); font-size: 0.85rem;">
+          <input type="text" placeholder="Exp: 10/29  CVV: •••" value="10/29   CVV: •••"
+            style="padding: 0.75rem; border: 1px solid var(--c-border); font-size: 0.85rem;">
+        </div>
+      </div>
+
+      <button class="btn-primary" id="checkoutPayBtn" style="width: 100%;">
+        <span>Complete Order & Authorize</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       08. TOAST NOTIFICATION CONTAINER
+       ======================================================================== -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- Application Script -->
+  <script src="js/app.js?v=20261107-footer-center-v19"></script>
+</body>
+
+</html>
+
